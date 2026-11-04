@@ -90,7 +90,7 @@ nav ul{list-style:none;margin:0;padding:0}
 
 /* Zahlen */
 .zahlen{background:var(--rose);padding:64px 0}
-.zahlen h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:28px}
+
 .zahlen ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .zahlen strong{display:block;font-family:var(--slab);color:var(--ausdauer);font-size:clamp(2.2rem,4vw,3rem);line-height:1.1;font-variant-numeric:tabular-nums}
 .zahlen span{color:var(--kompetenz);font-size:.95rem}
@@ -102,10 +102,10 @@ nav ul{list-style:none;margin:0;padding:0}
 .leiste .inner{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:center;padding-block:10px}
 .leiste a{color:#fff;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.05em;border:1.5px solid #fff;padding:5px 10px;text-decoration:none}
 .leiste .uhr{font-variant-numeric:tabular-nums;color:#FFC9B3}
-.intro h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:16px}
+
 /* Warum */
 .warum{background:#fff;padding:72px 0}
-.warum h2{font-size:clamp(1.6rem,3.2vw,2.4rem);max-width:22ch;margin-bottom:40px}
+
 .warum ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:32px 36px}
 .warum li svg{width:44px;height:44px;color:var(--vertrauen);margin-bottom:10px}
 .warum li p{color:var(--kompetenz)}
@@ -113,6 +113,28 @@ nav ul{list-style:none;margin:0;padding:0}
 @media (max-width:560px){.warum{padding:56px 0}.warum ul{grid-template-columns:1fr}}
 .google{background:var(--grau);padding:28px 0}
 .google p{border:2px dashed #c9cdd6;padding:18px 20px;font-size:.95rem}
+
+/* Einheitliche Abschnittstitel */
+.at{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:clamp(1.6rem,3vw,2.2rem);margin:0 auto 36px;max-width:32ch}
+.drei{display:inline-flex;gap:5px;align-items:center}
+.drei i{display:block;border-radius:50%}
+.drei i:nth-child(1){width:12px;height:12px;background:var(--vertrauen)}
+.drei i:nth-child(2){width:9px;height:9px;background:var(--waerme)}
+.drei i:nth-child(3){width:6px;height:6px;background:var(--ausdauer)}
+.intro .inner{max-width:780px}
+.intro .at{margin-bottom:24px}
+.zahlen .at{margin-bottom:32px}
+.zahlen ul{text-align:center}
+.warum .at{max-width:24ch}
+.warum li{text-align:center;display:flex;flex-direction:column;align-items:center}
+.zwei{margin-top:0}
+.unter{text-align:center;max-width:60ch;margin:-20px auto 20px}
+.filter{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px}
+.filter button{font:inherit;font-size:.92rem;font-weight:700;border:1.5px solid #cfd4dd;background:#fff;color:var(--kompetenz);padding:8px 16px;border-radius:999px;cursor:pointer}
+.filter button[aria-pressed="true"]{background:var(--kompetenz);border-color:var(--kompetenz);color:#fff}
+.filter button:focus-visible{outline:3px solid var(--waerme);outline-offset:2px}
+.stimme[hidden]{display:none}
+.stimmen .btn,.blog .mehrblog{display:table;margin:30px auto 0}
 /* Abschnittstitel */
 .titel{display:inline-block;background:var(--kompetenz);color:#fff;font-family:var(--slab);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.25rem,2.6vw,1.75rem);padding:12px 28px;text-align:center}
 .zentriert{text-align:center}
@@ -133,7 +155,7 @@ nav ul{list-style:none;margin:0;padding:0}
 
 /* Stimmen */
 .stimmen{background:var(--grau);padding:72px 0}
-.stimmen h2.eyebrow{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:32px}
+
 .raster{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media (max-width:900px){.raster{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.raster{grid-template-columns:1fr}}
@@ -161,7 +183,7 @@ nav ul{list-style:none;margin:0;padding:0}
 
 /* Blog */
 .blog{padding:72px 0}
-.blog h2.eyebrow{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:32px}
+
 .artikel{background:var(--grau);display:flex;flex-direction:column;text-decoration:none}
 .artikel img{aspect-ratio:3/2;object-fit:cover;width:100%}
 .artikel div{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -251,14 +273,14 @@ footer .social svg{width:26px;height:26px}
   </section>
   <section class="intro">
     <div class="inner">
-      <h2>Kennst du das?</h2>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Kennst du das?</h2>
       <p>Ein Kind hält sich die Ohren zu und zieht sich zurück. Ein anderes steht nach jeder Anweisung ratlos da oder explodiert, wenn der Bauklotzturm einstürzt. Du möchtest Kindern im Autismus-Spektrum und mit AD(H)S die bestmögliche Unterstützung geben, doch die gelernten Methoden greifen in der Praxis oft nicht so, wie du es dir erhoffst.</p>
       <p>Wenn du als <strong>pädagogische Fachkraft, Lehrkraft, Schulbegleitung oder Therapeut:in</strong> nach einem klaren System und praxiserprobten Werkzeugen suchst, die wirklich einen Unterschied machen, bist du bei uns genau richtig.</p>
     </div>
   </section>
   <section class="warum">
     <div class="inner">
-      <h2>Warum du bei der Akademie Neurodiversität richtig bist</h2>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Warum du bei der Akademie Neurodiversität richtig bist</h2>
       <ul>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="16" width="36" height="24" rx="3"/><path d="M18 16v-5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5M6 26h36M21 26v4h6v-4"/></svg><p>Ein praxiserprobtes System statt einzelner Tipps, das dich Schritt für Schritt zu echter Handlungssicherheit bringt.</p></li>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="15" r="7"/><path d="M10 41c1.5-8 7-12 14-12s12.5 4 14 12"/></svg><p>Entwickelt von einem Praktiker, der seit 2015 täglich Kinder und Jugendliche an Schulen begleitet.</p></li>
@@ -269,7 +291,7 @@ footer .social svg{width:26px;height:26px}
   </section>
   <section class="zahlen">
     <div class="inner">
-      <h2>Unsere Akademie in Zahlen</h2>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Unsere Akademie in Zahlen</h2>
       <ul>
         <li><strong data-ziel="400" data-nach="+">400+</strong><span>Teilnehmer:innen aus Schule, Kita und Therapie</span></li>
         <li><strong data-ziel="5,0">5,0</strong><span>Sterne auf Google</span></li>
@@ -280,7 +302,7 @@ footer .social svg{width:26px;height:26px}
   </section>
   <section class="schwerpunkte">
     <div class="inner">
-      <div class="zentriert"><h2 class="titel">Entdecke unsere Schwerpunkte</h2></div>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Entdecke unsere Schwerpunkte</h2>
       <div class="zwei">
         <article class="karte">
           <h3>Autismus-Pädagogik</h3>
@@ -302,7 +324,7 @@ footer .social svg{width:26px;height:26px}
   </section>
   <section class="fortbildungen" id="fortbildungen">
     <div class="inner">
-      <div class="zentriert"><h2 class="titel">Fortbildungen im Überblick</h2></div>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Fortbildungen im Überblick</h2>
       <div class="zwei">
         <article class="karte fb">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="52" height="36" rx="4"/><path d="M14 24h22M14 32h14M40 40l6-6 6 6"/><circle cx="46" cy="24" r="5"/></svg>
@@ -341,23 +363,31 @@ footer .social svg{width:26px;height:26px}
 
   <section class="stimmen">
     <div class="inner">
-      <h2 class="eyebrow">Stimmen zu unserer Arbeit</h2>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Stimmen zu unserer Arbeit</h2>
+      <p class="unter" id="stimmenUnter">Was Fachkräfte aus ganz unterschiedlichen Bereichen über die Fortbildungen sagen.</p>
+      <div class="filter" role="group" aria-label="Stimmen nach Bereich">
+        <button type="button" data-b="alle" aria-pressed="true">Alle</button>
+        <button type="button" data-b="schule" aria-pressed="false">Schule</button>
+        <button type="button" data-b="kita" aria-pressed="false">Kita &amp; Freizeit</button>
+        <button type="button" data-b="foerderung" aria-pressed="false">Schulbegleitung &amp; Förderung</button>
+        <button type="button" data-b="beratung" aria-pressed="false">Beratung &amp; Therapie</button>
+      </div>
       <div class="slider" aria-roledescription="Karussell" aria-label="Stimmen zu unserer Arbeit">
         <div class="spur" id="spur" tabindex="0">
-          <article class="stimme"><header><img src="bilder/stimme-nadja.webp" alt="Kundenstimme Nadja" width="64" height="64" loading="lazy"><div><b>Nadja</b><small>Fachkraft im Schulbegleitungsbereich</small></div></header><q>Ein respektvoller, ressourcenorientierter Umgang mit dem Thema.</q><p>Die Fortbildung hat mich fachlich und persönlich sehr bereichert. Ich habe ein tieferes Verständnis für Menschen im Autismus-Spektrum und viele Denkanstöße für meinen pädagogischen Blick gewonnen. Besonders die praxisnahen Beispiele nehme ich mit – ich würde es jederzeit wieder machen.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-kathy.webp" alt="Kundenstimme Kathy" width="64" height="64" loading="lazy"><div><b>Kathy</b><small>Staatlich anerkannte Erzieherin und Inklusionsfachkraft</small></div></header><q>Wertvolle und vor allem wertschätzende Tipps.</q><p>Es war wirklich eine ganz tolle Fortbildung mit wertvollen, vor allem wertschätzenden Tipps. Auch die Lernplattform und die Community haben mich begeistert. Als Erzieherin und Inklusionsfachkraft in einer Kita werde ich auf jeden Fall weiterhin an den Praxis-Stammtischen teilnehmen. Absolut verdiente 5 Sterne!</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-gerald.webp" alt="Kundenstimme Gerald" width="64" height="64" loading="lazy"><div><b>Gerald</b><small>Pädagoge, psychosozialer Berater und Referent</small></div></header><q>Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</q><p>Als Pädagoge und Vater eines Kindes mit AD(H)S kannte ich vieles bereits – trotzdem hat mir die Fortbildung einen völlig neuen Blick eröffnet. Das Gelernte konnte ich sofort im Familienalltag umsetzen. Meine wichtigste Erkenntnis: Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-carola.webp" alt="Kundenstimme Carola" width="64" height="64" loading="lazy"><div><b>Carola</b><small>Eltern- und Familienberatung, Kursleiterin</small></div></header><q>Flexibel, praxisnah und fachlich auf höchstem Niveau.</q><p>Die Fortbildung war sehr gut strukturiert. Besonders geschätzt habe ich, die Videos im eigenen Tempo bearbeiten zu können – wunderbar in meinen Berufsalltag integrierbar. Das Expertenwissen wird verständlich vermittelt, und die Praxis-Stammtische zur Fallbesprechung sind eine echte Bereicherung.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-julia.webp" alt="Kundenstimme Julia" width="64" height="64" loading="lazy"><div><b>Julia</b><small>Volksschullehrerin</small></div></header><q>Sofort umsetzbar – und goldwert.</q><p>Die Fortbildung beinhaltet immens viel Wissen, bedacht aufgeteilt. Vieles konnte ich mir aneignen und gleich anwenden – das hat mir einen großen Handlungsspielraum in der Begleitung von Autist:innen eröffnet. Besonders hervorzuheben sind Ennos wohlwollende Haltung und seine Alltagsbeispiele; der lebenslange Zugriff ist unbezahlbar.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-marie.webp" alt="Kundenstimme Marie" width="64" height="64" loading="lazy"><div><b>Marie</b><small>Erzieherin und Fachkraft für tiergestützte Interventionen</small></div></header><q>Direkt einsetzbar – auch in der tiergestützten Arbeit.</q><p>Eine sehr informative und praxisnahe Fortbildung, die mir großen Spaß gemacht hat. Sie hat meine Sichtweise und Haltung gegenüber Menschen im Autismus-Spektrum nachhaltig verändert. Besonders bereichernd sind die regelmäßigen Praxis-Stammtische mit ihren Fallbeispielen – sie runden das Angebot perfekt ab.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-carsten.webp" alt="Kundenstimme Carsten" width="64" height="64" loading="lazy"><div><b>Carsten</b><small>Sonderpädagoge</small></div></header><q>Professionell, effektiv und netzwerkorientiert</q><p>Ich habe schon viele Fortbildungen gemacht, keine war so gut strukturiert wie diese. Die Möglichkeit, alle Inhalte im eigenen Tempo zu erarbeiten und bei eventuell aufkommenden Fragen jederzeit bei den Stammtischen Antworten erhalten zu können erachte ich als ideal für wirklich jede/n.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-stefanie.webp" alt="Kundenstimme Stefanie" width="64" height="64" loading="lazy"><div><b>Stefanie</b><small>Heilpädagogin</small></div></header><q>Hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt.</q><p>Die Fortbildung „Autismus-Pädagogik“ hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt. Ich konnte viele Themen nochmals vertiefen, aber auch Neues dazulernen. In den Live Calls fühlte man sich immer sehr gut begleitet und professionell beraten.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-yvonne.webp" alt="Kundenstimme Yvonne" width="64" height="64" loading="lazy"><div><b>Yvonne</b><small>Integrationslehrerin</small></div></header><q>Genau das Richtige – Gelerntes direkt anwenden.</q><p>Die Fortbildung ist für mich genau richtig. Ich kann alle Inhalte in meinem eigenen Tempo lernen, was perfekt zu meinem Alltag als Integrationslehrerin passt. Das Gelernte lässt sich direkt in der Praxis anwenden.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-alexandra.webp" alt="Kundenstimme Alexandra" width="64" height="64" loading="lazy"><div><b>Alexandra</b><small>Psychosoziale Beraterin mit eidg. Diplom</small></div></header><q>Fachlich wie persönlich gestärkt.</q><p>Besonders wertvoll war, dass ich mein Lerntempo selbst bestimmen konnte. Der Austausch in der Gruppe ermöglicht neue Perspektiven und gemeinsame Reflexion. Insgesamt fühle ich mich durch die Ausbildung fachlich wie persönlich gestärkt.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-barbara.webp" alt="Kundenstimme Barbara" width="64" height="64" loading="lazy"><div><b>Barbara</b><small>Sonderschullehrerin</small></div></header><q>Praxisnahe Hilfen für den Schulalltag.</q><p>Als Sonderschullehrerin ist die Fortbildung sehr hilfreich. Die vielen Inputs und praxisnahen Hilfestellungen lassen sich leicht in den Schulalltag integrieren. Die Lerninhalte und Live Calls sind sehr flexibel aufgebaut und gut umsetzbar.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-nicole.webp" alt="Kundenstimme Nicole" width="64" height="64" loading="lazy"><div><b>Nicole</b><small>Inhaberin einer Baby- und Kleinkinderschwimmschule</small></div></header><q>Eine echte Bereicherung – flexibel und praxisnah.</q><p>Das flexible Format ermöglicht es mir, die Inhalte in meinem eigenen Tempo zu erarbeiten. Besonders wertvoll sind die Fallbesprechungen und der wertschätzende Umgang. Ennos Praxiserfahrung hat die Fortbildung zu einer echten Bereicherung gemacht.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-dijana.webp" alt="Kundenstimme Dijana" width="64" height="64" loading="lazy"><div><b>Dijana</b><small>Lehrerin und Kinder- und Jugendbetreuerin</small></div></header><q>Individuelles Lerntempo, klar verständliche Inhalte.</q><p>Die Fortbildung war sehr wertvoll. Am hilfreichsten war für mich, dass das Tempo individuell anpassbar ist und die Lerninhalte klar und verständlich aufbereitet sind.</p></article>
-          <article class="stimme"><header><img src="bilder/stimme-cordula.webp" alt="Kundenstimme Cordula" width="64" height="64" loading="lazy"><div><b>Cordula</b><small>Beratungs- und Förderlehrkraft (BFZ), Psychologische Beratung und Coaching für Kinder und Jugendliche</small></div></header><q>Ein echter Augenöffner – praxisnah und fachlich fundiert.</q><p>Die Fortbildung hat mein Verständnis für Autismus deutlich vertieft und mir viele praxisnahe Impulse für meine Arbeit als Beratungs- und Förderlehrkraft gegeben. Besonders das Modul „Komorbiditäten und herausforderndes Verhalten“ hat mir neue Perspektiven eröffnet. Die Schritt-für-Schritt-Struktur hilft, das Wissen systematisch aufzubauen und mit dem eigenen Erfahrungsschatz abzugleichen.</p></article>
+          <article class="stimme" data-b="foerderung"><header><img src="bilder/stimme-nadja.webp" alt="Kundenstimme Nadja" width="64" height="64" loading="lazy"><div><b>Nadja</b><small>Fachkraft im Schulbegleitungsbereich</small></div></header><q>Ein respektvoller, ressourcenorientierter Umgang mit dem Thema.</q><p>Die Fortbildung hat mich fachlich und persönlich sehr bereichert. Ich habe ein tieferes Verständnis für Menschen im Autismus-Spektrum und viele Denkanstöße für meinen pädagogischen Blick gewonnen. Besonders die praxisnahen Beispiele nehme ich mit – ich würde es jederzeit wieder machen.</p></article>
+          <article class="stimme" data-b="kita"><header><img src="bilder/stimme-kathy.webp" alt="Kundenstimme Kathy" width="64" height="64" loading="lazy"><div><b>Kathy</b><small>Staatlich anerkannte Erzieherin und Inklusionsfachkraft</small></div></header><q>Wertvolle und vor allem wertschätzende Tipps.</q><p>Es war wirklich eine ganz tolle Fortbildung mit wertvollen, vor allem wertschätzenden Tipps. Auch die Lernplattform und die Community haben mich begeistert. Als Erzieherin und Inklusionsfachkraft in einer Kita werde ich auf jeden Fall weiterhin an den Praxis-Stammtischen teilnehmen. Absolut verdiente 5 Sterne!</p></article>
+          <article class="stimme" data-b="beratung"><header><img src="bilder/stimme-gerald.webp" alt="Kundenstimme Gerald" width="64" height="64" loading="lazy"><div><b>Gerald</b><small>Pädagoge, psychosozialer Berater und Referent</small></div></header><q>Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</q><p>Als Pädagoge und Vater eines Kindes mit AD(H)S kannte ich vieles bereits – trotzdem hat mir die Fortbildung einen völlig neuen Blick eröffnet. Das Gelernte konnte ich sofort im Familienalltag umsetzen. Meine wichtigste Erkenntnis: Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</p></article>
+          <article class="stimme" data-b="beratung"><header><img src="bilder/stimme-carola.webp" alt="Kundenstimme Carola" width="64" height="64" loading="lazy"><div><b>Carola</b><small>Eltern- und Familienberatung, Kursleiterin</small></div></header><q>Flexibel, praxisnah und fachlich auf höchstem Niveau.</q><p>Die Fortbildung war sehr gut strukturiert. Besonders geschätzt habe ich, die Videos im eigenen Tempo bearbeiten zu können – wunderbar in meinen Berufsalltag integrierbar. Das Expertenwissen wird verständlich vermittelt, und die Praxis-Stammtische zur Fallbesprechung sind eine echte Bereicherung.</p></article>
+          <article class="stimme" data-b="schule"><header><img src="bilder/stimme-julia.webp" alt="Kundenstimme Julia" width="64" height="64" loading="lazy"><div><b>Julia</b><small>Volksschullehrerin</small></div></header><q>Sofort umsetzbar – und goldwert.</q><p>Die Fortbildung beinhaltet immens viel Wissen, bedacht aufgeteilt. Vieles konnte ich mir aneignen und gleich anwenden – das hat mir einen großen Handlungsspielraum in der Begleitung von Autist:innen eröffnet. Besonders hervorzuheben sind Ennos wohlwollende Haltung und seine Alltagsbeispiele; der lebenslange Zugriff ist unbezahlbar.</p></article>
+          <article class="stimme" data-b="kita"><header><img src="bilder/stimme-marie.webp" alt="Kundenstimme Marie" width="64" height="64" loading="lazy"><div><b>Marie</b><small>Erzieherin und Fachkraft für tiergestützte Interventionen</small></div></header><q>Direkt einsetzbar – auch in der tiergestützten Arbeit.</q><p>Eine sehr informative und praxisnahe Fortbildung, die mir großen Spaß gemacht hat. Sie hat meine Sichtweise und Haltung gegenüber Menschen im Autismus-Spektrum nachhaltig verändert. Besonders bereichernd sind die regelmäßigen Praxis-Stammtische mit ihren Fallbeispielen – sie runden das Angebot perfekt ab.</p></article>
+          <article class="stimme" data-b="schule"><header><img src="bilder/stimme-carsten.webp" alt="Kundenstimme Carsten" width="64" height="64" loading="lazy"><div><b>Carsten</b><small>Sonderpädagoge</small></div></header><q>Professionell, effektiv und netzwerkorientiert</q><p>Ich habe schon viele Fortbildungen gemacht, keine war so gut strukturiert wie diese. Die Möglichkeit, alle Inhalte im eigenen Tempo zu erarbeiten und bei eventuell aufkommenden Fragen jederzeit bei den Stammtischen Antworten erhalten zu können erachte ich als ideal für wirklich jede/n.</p></article>
+          <article class="stimme" data-b="foerderung"><header><img src="bilder/stimme-stefanie.webp" alt="Kundenstimme Stefanie" width="64" height="64" loading="lazy"><div><b>Stefanie</b><small>Heilpädagogin</small></div></header><q>Hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt.</q><p>Die Fortbildung „Autismus-Pädagogik“ hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt. Ich konnte viele Themen nochmals vertiefen, aber auch Neues dazulernen. In den Live Calls fühlte man sich immer sehr gut begleitet und professionell beraten.</p></article>
+          <article class="stimme" data-b="schule"><header><img src="bilder/stimme-yvonne.webp" alt="Kundenstimme Yvonne" width="64" height="64" loading="lazy"><div><b>Yvonne</b><small>Integrationslehrerin</small></div></header><q>Genau das Richtige – Gelerntes direkt anwenden.</q><p>Die Fortbildung ist für mich genau richtig. Ich kann alle Inhalte in meinem eigenen Tempo lernen, was perfekt zu meinem Alltag als Integrationslehrerin passt. Das Gelernte lässt sich direkt in der Praxis anwenden.</p></article>
+          <article class="stimme" data-b="beratung"><header><img src="bilder/stimme-alexandra.webp" alt="Kundenstimme Alexandra" width="64" height="64" loading="lazy"><div><b>Alexandra</b><small>Psychosoziale Beraterin mit eidg. Diplom</small></div></header><q>Fachlich wie persönlich gestärkt.</q><p>Besonders wertvoll war, dass ich mein Lerntempo selbst bestimmen konnte. Der Austausch in der Gruppe ermöglicht neue Perspektiven und gemeinsame Reflexion. Insgesamt fühle ich mich durch die Ausbildung fachlich wie persönlich gestärkt.</p></article>
+          <article class="stimme" data-b="schule"><header><img src="bilder/stimme-barbara.webp" alt="Kundenstimme Barbara" width="64" height="64" loading="lazy"><div><b>Barbara</b><small>Sonderschullehrerin</small></div></header><q>Praxisnahe Hilfen für den Schulalltag.</q><p>Als Sonderschullehrerin ist die Fortbildung sehr hilfreich. Die vielen Inputs und praxisnahen Hilfestellungen lassen sich leicht in den Schulalltag integrieren. Die Lerninhalte und Live Calls sind sehr flexibel aufgebaut und gut umsetzbar.</p></article>
+          <article class="stimme" data-b="kita"><header><img src="bilder/stimme-nicole.webp" alt="Kundenstimme Nicole" width="64" height="64" loading="lazy"><div><b>Nicole</b><small>Inhaberin einer Baby- und Kleinkinderschwimmschule</small></div></header><q>Eine echte Bereicherung – flexibel und praxisnah.</q><p>Das flexible Format ermöglicht es mir, die Inhalte in meinem eigenen Tempo zu erarbeiten. Besonders wertvoll sind die Fallbesprechungen und der wertschätzende Umgang. Ennos Praxiserfahrung hat die Fortbildung zu einer echten Bereicherung gemacht.</p></article>
+          <article class="stimme" data-b="schule"><header><img src="bilder/stimme-dijana.webp" alt="Kundenstimme Dijana" width="64" height="64" loading="lazy"><div><b>Dijana</b><small>Lehrerin und Kinder- und Jugendbetreuerin</small></div></header><q>Individuelles Lerntempo, klar verständliche Inhalte.</q><p>Die Fortbildung war sehr wertvoll. Am hilfreichsten war für mich, dass das Tempo individuell anpassbar ist und die Lerninhalte klar und verständlich aufbereitet sind.</p></article>
+          <article class="stimme" data-b="foerderung"><header><img src="bilder/stimme-cordula.webp" alt="Kundenstimme Cordula" width="64" height="64" loading="lazy"><div><b>Cordula</b><small>Beratungs- und Förderlehrkraft (BFZ), Psychologische Beratung und Coaching für Kinder und Jugendliche</small></div></header><q>Ein echter Augenöffner – praxisnah und fachlich fundiert.</q><p>Die Fortbildung hat mein Verständnis für Autismus deutlich vertieft und mir viele praxisnahe Impulse für meine Arbeit als Beratungs- und Förderlehrkraft gegeben. Besonders das Modul „Komorbiditäten und herausforderndes Verhalten“ hat mir neue Perspektiven eröffnet. Die Schritt-für-Schritt-Struktur hilft, das Wissen systematisch aufzubauen und mit dem eigenen Erfahrungsschatz abzugleichen.</p></article>
         </div>
         <button class="pfeil zurueck" type="button" id="zurueck" aria-label="Vorherige Stimmen">‹</button>
         <button class="pfeil weiter" type="button" id="weiter" aria-label="Nächste Stimmen">›</button>
@@ -369,7 +399,7 @@ footer .social svg{width:26px;height:26px}
 
   <section class="blog">
     <div class="inner">
-      <h2 class="eyebrow">Unsere neuesten Blogartikel</h2>
+      <h2 class="at"><span class="drei" aria-hidden="true"><i></i><i></i><i></i></span>Unsere neuesten Blogartikel</h2>
       <div class="raster">
         <a class="artikel" href="https://akademieneurodiversitaet.com/autismus-fortbildung-finden/"><img src="bilder/blog-autismus-fortbildung-finden.webp" alt="Pädagogische Fachkraft begleitet einen Jungen im Autismus-Spektrum konzentriert bei einer Aufgabe am Tisch" width="720" height="481" loading="lazy"><div><span class="kat">Themenbereich Autismus</span><h3>Autismus Fortbildung finden: 7 wichtige Fragen, die du vor der Anmeldung klären solltest</h3><p>Du tippst „Autismus Fortbildung“ in die Suchmaschine und bekommst eine lange Liste. Tagesseminare, Online-Kurse, Lehrgänge über mehrere Monate …</p><span class="weiter">Weiterlesen</span></div></a>
         <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-bei-kindern-verstehen/"><img src="bilder/blog-adhs-verstehen.webp" alt="Mädchen schaut am Schreibtisch verträumt zur Seite, ein typisches Bild für AD(H)S bei Kindern" width="720" height="480" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>AD(H)S bei Kindern verstehen: Ein Überblick für pädagogische Fachkräfte</h3><p>Ein Kind startet dreimal in dieselbe Aufgabe und kommt nie über den ersten Satz hinaus. Ein anderes ruft die Antwort in die Runde …</p><span class="weiter">Weiterlesen</span></div></a>
@@ -436,6 +466,12 @@ var t=Math.floor(r/864e5),h=Math.floor(r/36e5)%24,m=Math.floor(r/6e4)%60;documen
 (function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
 var els=document.querySelectorAll("[data-ziel]");var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,z=el.dataset.ziel,komma=z.indexOf(",")>-1,ziel=parseFloat(z.replace(",",".")),nach=el.dataset.nach||"",t0=null;
 function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200),v=ziel*(1-Math.pow(1-p,3));el.textContent=(komma?v.toFixed(1).replace(".",","):Math.round(v))+nach;if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)})},{threshold:.6});els.forEach(function(e){io.observe(e)})})();
+</script>
+<script>
+(function(){var titel={alle:"Was Fachkräfte aus ganz unterschiedlichen Bereichen über die Fortbildungen sagen.",schule:"Was Lehrkräfte über die Fortbildungen sagen.",kita:"Was Fachkräfte aus Kita, Hort und Freizeit über die Fortbildungen sagen.",foerderung:"Was Schulbegleitungen und Förderkräfte über die Fortbildungen sagen.",beratung:"Was Berater:innen und Therapeut:innen über die Fortbildungen sagen."};
+var btns=document.querySelectorAll(".filter button"),karten=document.querySelectorAll(".spur .stimme"),spur=document.getElementById("spur");
+btns.forEach(function(b){b.onclick=function(){var w=b.dataset.b;btns.forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+karten.forEach(function(k){k.hidden=!(w==="alle"||k.dataset.b===w)});document.getElementById("stimmenUnter").textContent=titel[w];spur.scrollLeft=0;spur.dispatchEvent(new Event("scroll"));window.dispatchEvent(new Event("resize"))}})})();
 </script>
 </body>
 </html>
