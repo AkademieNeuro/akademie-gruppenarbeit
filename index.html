@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Stammtisch – Ergebnisse eintragen</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+main{max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-size:1.6rem;font-weight:800}
+.frage{background:var(--surface);border-radius:14px;padding:14px 16px;font-size:1.05rem;border:1px solid var(--line)}
+.frage small{display:block;color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gbtn{font-weight:800;font-family:var(--display);font-size:1.2rem;padding:24px 8px;border-radius:16px;border:0;color:var(--note-ink)}
+textarea{width:100%;min-height:170px;font-size:1.1rem;resize:vertical}
+.send{font-size:1.2rem;padding:18px}
+.ok{color:var(--accent);font-weight:700;min-height:1.5em;text-align:center;margin:0}
+.back{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0;align-self:flex-start}
+.badge{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;color:var(--note-ink);font-family:var(--display)}
+.liste{display:flex;flex-direction:column;gap:8px}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.98rem;white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <div class="brand">Akademie Neurodiversität · Praxis-Stammtisch</div>
+    <h1 id="titel">Ergebnisse eintragen</h1>
+  </div>
+
+  <p id="status" class="muted">Wird geladen …</p>
+
+  <section id="schritt1" hidden>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="frage"><small>Eure Frage</small><span class="frageText"></span></div>
+      <h2 style="font-size:1.25rem">In welcher Gruppe bist du?</h2>
+      <p class="muted" style="margin:-8px 0 0">Die Nummer steht in Zoom oben im Fenster.</p>
+      <div class="groups" id="gruppen"></div>
+    </div>
+  </section>
+
+  <section id="schritt2" hidden>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <button class="back" id="zurueck" type="button">← andere Gruppe wählen</button>
+      <span class="badge" id="gruppeBadge">Gruppe 1</span>
+      <div class="frage"><small>Eure Frage</small><span class="frageText"></span></div>
+      <label for="text" style="font-weight:700">Euer Ergebnis</label>
+      <textarea id="text" maxlength="500" placeholder="Ein Punkt pro Absenden – ihr könnt mehrmals absenden."></textarea>
+      <button class="btn send" id="senden" type="button" disabled>Absenden</button>
+      <p class="ok" id="meldung" aria-live="polite"></p>
+      <div id="bisherWrap" hidden>
+        <p class="muted" style="margin:0 0 6px">Schon abgeschickt:</p>
+        <div class="liste" id="bisher"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let stand = null, gruppe = null;
+
+async function start() {
+  try {
+    stand = await Board.laden();
+    if (stand.titel) $("titel").textContent = stand.titel;
+    document.querySelectorAll(".frageText").forEach(el => el.textContent = stand.frage);
+    const box = $("gruppen"); box.innerHTML = "";
+    for (let g = 1; g <= stand.gruppen; g++) {
+      const b = document.createElement("button");
+      b.className = "gbtn"; b.type = "button"; b.textContent = Board.name(g);
+      b.style.background = Board.farbe(g);
+      b.onclick = () => waehlen(g);
+      box.appendChild(b);
+    }
+    $("status").hidden = true;
+    let gemerkt = null;
+    try { gemerkt = JSON.parse(sessionStorage.getItem("stammtischGruppe") || "null"); } catch (e) {}
+    if (gemerkt && gemerkt.stammtisch === stand.stammtisch && gemerkt.gruppe <= stand.gruppen) waehlen(gemerkt.gruppe);
+    else $("schritt1").hidden = false;
+  } catch (e) {
+    $("status").textContent = e.message + " Bitte Seite neu laden.";
+    $("status").className = "fehler";
+  }
+}
+
+function waehlen(g) {
+  gruppe = g;
+  try { sessionStorage.setItem("stammtischGruppe", JSON.stringify({ stammtisch: stand.stammtisch, gruppe: g })); } catch (e) {}
+  $("gruppeBadge").textContent = Board.name(g);
+  $("gruppeBadge").style.background = Board.farbe(g);
+  $("schritt1").hidden = true; $("schritt2").hidden = false;
+  $("meldung").textContent = "";
+  zeigeBisher();
+  $("text").focus();
+}
+
+function zeigeBisher() {
+  const eigene = (stand.eintraege || []).filter(e => e.gruppe === gruppe && e.von === "Gruppe");
+  $("bisherWrap").hidden = !eigene.length;
+  $("bisher").innerHTML = "";
+  eigene.forEach(e => { const d = document.createElement("div"); d.textContent = e.text; $("bisher").appendChild(d); });
+}
+
+$("zurueck").onclick = () => { $("schritt2").hidden = true; $("schritt1").hidden = false; };
+$("text").addEventListener("input", () => { $("senden").disabled = !$("text").value.trim(); });
+
+$("senden").onclick = async () => {
+  const text = $("text").value.trim();
+  if (!text) return;
+  $("senden").disabled = true; $("senden").textContent = "Wird gesendet …";
+  $("meldung").className = "ok"; $("meldung").textContent = "";
+  try {
+    const r = await Board.senden({ aktion: "eintragen", gruppe, text });
+    if (!r.ok) throw new Error(r.fehler || "Senden fehlgeschlagen.");
+    $("text").value = "";
+    $("meldung").textContent = "Gesendet ✓ – ihr könnt gerne noch einen Punkt schicken.";
+    stand = await Board.laden(); zeigeBisher();
+  } catch (e) {
+    $("meldung").className = "fehler";
+    $("meldung").textContent = e.message + " Dein Text ist noch da – bitte nochmal auf Absenden tippen.";
+  } finally {
+    $("senden").textContent = "Absenden";
+    $("senden").disabled = !$("text").value.trim();
+  }
+};
+
+start();
+</script>
+</body>
+</html>
