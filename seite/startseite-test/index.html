@@ -96,6 +96,26 @@ nav ul{list-style:none;margin:0;padding:0}
 .zahlen span{color:var(--kompetenz);font-size:.95rem}
 @media (max-width:760px){.zahlen ul{grid-template-columns:1fr 1fr}}
 
+
+/* Leiste oben */
+.leiste{background:var(--kompetenz);color:#fff;font-size:.92rem}
+.leiste .inner{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:center;padding-block:10px}
+.leiste a{color:#fff;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.05em;border:1.5px solid #fff;padding:5px 10px;text-decoration:none}
+.leiste .uhr{font-variant-numeric:tabular-nums;color:#FFC9B3}
+.intro h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:16px}
+/* Warum */
+.warum{background:#fff;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end}
+.warum-text{padding:72px max(20px,calc((100vw - var(--breite))/2 + 20px));padding-right:48px}
+.warum h2{font-size:clamp(1.6rem,3.2vw,2.4rem);max-width:18ch;margin-bottom:36px}
+.warum ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:32px 40px}
+.warum li svg{width:44px;height:44px;color:var(--vertrauen);margin-bottom:10px}
+.warum li p{color:var(--kompetenz)}
+.warum-bild{background:var(--grau);height:100%;display:flex;align-items:flex-end;justify-content:center;padding-top:40px}
+.warum-bild img{max-width:380px;width:90%}
+@media (max-width:900px){.warum{grid-template-columns:1fr}.warum-text{padding:56px 20px 32px}.warum-bild{padding-top:24px}}
+@media (max-width:560px){.warum ul{grid-template-columns:1fr}}
+.google{background:var(--grau);padding:28px 0}
+.google p{border:2px dashed #c9cdd6;padding:18px 20px;font-size:.95rem}
 /* Abschnittstitel */
 .titel{display:inline-block;background:var(--kompetenz);color:#fff;font-family:var(--slab);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.25rem,2.6vw,1.75rem);padding:12px 28px;text-align:center}
 .zentriert{text-align:center}
@@ -177,6 +197,9 @@ footer .social svg{width:26px;height:26px}
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
+<div class="leiste" id="leiste" data-bis="2026-10-19T23:59:59+02:00" hidden>
+  <div class="inner"><span><strong>Fortbildung AD(H)S-Pädagogik:</strong> Anmeldung bis 19. Oktober 2026</span><span class="uhr" id="uhr"></span><a href="https://akademieneurodiversitaet.com/adhs-fortbildung/">Jetzt informieren</a></div>
+</div>
 <header class="kopf">
   <div class="inner">
     <a class="logo" href="https://akademieneurodiversitaet.com/"><img src="bilder/logo-weiss.svg" alt="Logo der Akademie Neurodiversität" width="190" height="70"></a>
@@ -224,44 +247,41 @@ footer .social svg{width:26px;height:26px}
       <div class="hero-box">
         <span class="eyebrow">Akademie Neurodiversität</span>
         <h1>Vom täglichen Reagieren ins souveräne Begleiten</h1>
-        <p>Starte jetzt mit unseren praxisorientierten Fortbildungen und gewinne die Souveränität, die du für die Begleitung von Kindern mit Autismus und AD(H)S brauchst.</p>
+        <p>Starte jetzt mit unseren praxisorientierten Fortbildungen und gewinne die Souveränität, die du für die Begleitung von Kindern im Autismus-Spektrum und mit AD(H)S brauchst.</p>
         <div><a class="btn" href="#fortbildungen">Fortbildungen entdecken</a></div>
       </div>
     </div>
   </section>
-
   <section class="intro">
     <div class="inner">
-      <p>Der pädagogische Alltag stellt dich täglich vor besondere Herausforderungen. Du möchtest Kindern im Autismus-Spektrum und mit AD(H)S die bestmögliche Unterstützung bieten, doch oft funktionieren die gelernten Methoden in der Praxis nicht wie erhofft.</p>
-      <p>Wenn du als <strong>Pädagogische Fachkraft, Lehrpersonal, Schulbegleitung oder Therapeut:in</strong> nach einem klaren Fahrplan und praxiserprobten Werkzeugen suchst, die wirklich einen Unterschied machen, bist du bei uns genau richtig.</p>
+      <h2>Kennst du das?</h2>
+      <p>Ein Kind hält sich die Ohren zu und zieht sich zurück. Ein anderes steht nach jeder Anweisung ratlos da oder explodiert, wenn der Bauklotzturm einstürzt. Du möchtest Kindern im Autismus-Spektrum und mit AD(H)S die bestmögliche Unterstützung geben, doch die gelernten Methoden greifen in der Praxis oft nicht so, wie du es dir erhoffst.</p>
+      <p>Wenn du als <strong>pädagogische Fachkraft, Lehrkraft, Schulbegleitung oder Therapeut:in</strong> nach einem klaren System und praxiserprobten Werkzeugen suchst, die wirklich einen Unterschied machen, bist du bei uns genau richtig.</p>
     </div>
   </section>
-
-  <section class="enno">
-    <div class="inner">
-      <div>
-        <span class="eyebrow">Aus der Praxis, für die Praxis.</span>
-        <h2>Hallo, ich bin Enno Eirich, Gründer der Akademie Neurodiversität.</h2>
-        <p>In mehr als einem Jahrzehnt Praxiserfahrung habe ich eines immer wieder erlebt: Engagierte Fachkräfte stoßen an ihre Grenzen, weil die Lücke zwischen Theorie und dem anspruchsvollen Alltag riesig ist.</p>
-        <p>Genau um diese Lücke zu schließen, wurde die Akademie gegründet. Unsere Mission ist es, dir praxiserprobte Werkzeuge und ein klares System zu geben, damit du wieder mit Sicherheit, Kompetenz und Souveränität arbeiten kannst.</p>
-        <a class="btn" href="https://akademieneurodiversitaet.com/ueber-mich/">Mehr über uns erfahren</a>
-      </div>
-      <img src="bilder/enno.webp" alt="Enno Eirich - Über die Akademie Neurodiversität" width="700" height="840" loading="lazy">
+  <section class="warum">
+    <div class="warum-text">
+      <h2>Warum du bei der Akademie Neurodiversität richtig bist</h2>
+      <ul>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="16" width="36" height="24" rx="3"/><path d="M18 16v-5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5M6 26h36M21 26v4h6v-4"/></svg><p>Ein praxiserprobtes System statt einzelner Tipps, das dich Schritt für Schritt zu echter Handlungssicherheit bringt.</p></li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="15" r="7"/><path d="M10 41c1.5-8 7-12 14-12s12.5 4 14 12"/></svg><p>Entwickelt von einem Praktiker, der seit 2015 täglich Kinder und Jugendliche an Schulen begleitet.</p></li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10h32a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H22l-8 7v-7H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/><path d="M14 20h20M14 26h12"/></svg><p>Persönliche Begleitung im Praxis-Stammtisch alle 3 Wochen, mit Enno direkt dabei.</p></li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 41S7 31 7 18.5A8.5 8.5 0 0 1 24 13a8.5 8.5 0 0 1 17 5.5C41 31 24 41 24 41z"/></svg><p>Lebenslanger Zugang und eine Gemeinschaft, die auch nach der Fortbildung bleibt.</p></li>
+      </ul>
     </div>
+    <div class="warum-bild"><img src="bilder/enno.webp" alt="Enno Eirich, Gründer der Akademie Neurodiversität" width="700" height="840" loading="lazy"></div>
   </section>
-
   <section class="zahlen">
     <div class="inner">
-      <h2>Meine Erfahrung in Zahlen</h2>
+      <h2>Unsere Akademie in Zahlen</h2>
       <ul>
-        <li><strong>&gt; 13</strong><span>Jahre Praxiserfahrung</span></li>
-        <li><strong>3.150+</strong><span>Stunden in der direkten Förderung</span></li>
-        <li><strong>950+</strong><span>Beratungsgespräche mit Fachkräften &amp; Eltern</span></li>
-        <li><strong>100+</strong><span>gegebene Fortbildungen &amp; Workshops</span></li>
+        <li><strong data-ziel="400" data-nach="+">400+</strong><span>Teilnehmer:innen aus Schule, Kita und Therapie</span></li>
+        <li><strong data-ziel="5,0">5,0</strong><span>Sterne auf Google</span></li>
+        <li><strong data-ziel="100">100</strong><span>Stunden, flexibel in deinem Tempo</span></li>
+        <li><strong data-ziel="2">2</strong><span>spezialisierte Fortbildungen</span></li>
       </ul>
     </div>
   </section>
-
   <section class="schwerpunkte">
     <div class="inner">
       <div class="zentriert"><h2 class="titel">Entdecke unsere Schwerpunkte</h2></div>
@@ -279,7 +299,11 @@ footer .social svg{width:26px;height:26px}
       </div>
     </div>
   </section>
-
+  <section class="google">
+    <div class="inner">
+      <p><strong>Platzhalter Google-Bewertungen:</strong> Hier sitzt auf der echten Seite das Bewertungs-Widget (TrustIndex). Es wird nach der Zustimmung im Cookie-Banner geladen und kommt beim Umzug mit dem Banner zusammen dazu.</p>
+    </div>
+  </section>
   <section class="fortbildungen" id="fortbildungen">
     <div class="inner">
       <div class="zentriert"><h2 class="titel">Fortbildungen im Überblick</h2></div>
@@ -301,6 +325,23 @@ footer .social svg{width:26px;height:26px}
       </div>
     </div>
   </section>
+  <section class="enno">
+    <div class="inner">
+      <div>
+        <span class="eyebrow">Aus der Praxis, für die Praxis.</span>
+        <h2>Hallo, ich bin Enno Eirich, Gründer der Akademie Neurodiversität.</h2>
+        <p>In mehr als einem Jahrzehnt Praxiserfahrung habe ich eines immer wieder erlebt: Engagierte Fachkräfte stoßen an ihre Grenzen, weil die Lücke zwischen Theorie und dem anspruchsvollen Alltag riesig ist.</p>
+        <p>Genau um diese Lücke zu schließen, wurde die Akademie gegründet. Unsere Mission ist es, dir praxiserprobte Werkzeuge und ein klares System zu geben, damit du wieder mit Sicherheit, Kompetenz und Souveränität arbeiten kannst.</p>
+        <a class="btn" href="https://akademieneurodiversitaet.com/ueber-mich/">Mehr über Enno</a>
+      </div>
+      <img src="bilder/enno.webp" alt="Enno Eirich - Über die Akademie Neurodiversität" width="700" height="840" loading="lazy">
+    </div>
+  </section>
+
+
+
+
+
 
   <section class="stimmen">
     <div class="inner">
@@ -391,6 +432,14 @@ function zeichne(){var n=anzahl(),i=Math.round(s.scrollLeft/seite());p.innerHTML
 z.disabled=s.scrollLeft<5;w.disabled=s.scrollLeft+seite()>=s.scrollWidth-5}
 z.onclick=function(){s.scrollBy({left:-seite()})};w.onclick=function(){s.scrollBy({left:seite()})};
 var t;s.addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(zeichne,80)});window.addEventListener("resize",zeichne);zeichne()})();
+</script>
+<script>
+(function(){var l=document.getElementById("leiste");if(!l)return;var bis=new Date(l.dataset.bis),zeigen=location.hash==="#leiste";
+function tick(){var r=bis-new Date();if(r<=0&&!zeigen){l.hidden=true;return}l.hidden=false;if(r<=0){document.getElementById("uhr").textContent="(Vorschau, Frist ist abgelaufen)";return}
+var t=Math.floor(r/864e5),h=Math.floor(r/36e5)%24,m=Math.floor(r/6e4)%60;document.getElementById("uhr").textContent="noch "+t+" Tage "+h+" Std "+m+" Min";setTimeout(tick,30000)}tick()})();
+(function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
+var els=document.querySelectorAll("[data-ziel]");var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,z=el.dataset.ziel,komma=z.indexOf(",")>-1,ziel=parseFloat(z.replace(",",".")),nach=el.dataset.nach||"",t0=null;
+function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200),v=ziel*(1-Math.pow(1-p,3));el.textContent=(komma?v.toFixed(1).replace(".",","):Math.round(v))+nach;if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)})},{threshold:.6});els.forEach(function(e){io.observe(e)})})();
 </script>
 </body>
 </html>
