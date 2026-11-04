@@ -104,16 +104,13 @@ nav ul{list-style:none;margin:0;padding:0}
 .leiste .uhr{font-variant-numeric:tabular-nums;color:#FFC9B3}
 .intro h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:16px}
 /* Warum */
-.warum{background:#fff;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end}
-.warum-text{padding:72px max(20px,calc((100vw - var(--breite))/2 + 20px));padding-right:48px}
-.warum h2{font-size:clamp(1.6rem,3.2vw,2.4rem);max-width:18ch;margin-bottom:36px}
-.warum ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:32px 40px}
+.warum{background:#fff;padding:72px 0}
+.warum h2{font-size:clamp(1.6rem,3.2vw,2.4rem);max-width:22ch;margin-bottom:40px}
+.warum ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:32px 36px}
 .warum li svg{width:44px;height:44px;color:var(--vertrauen);margin-bottom:10px}
 .warum li p{color:var(--kompetenz)}
-.warum-bild{background:var(--grau);height:100%;display:flex;align-items:flex-end;justify-content:center;padding-top:40px}
-.warum-bild img{max-width:380px;width:90%}
-@media (max-width:900px){.warum{grid-template-columns:1fr}.warum-text{padding:56px 20px 32px}.warum-bild{padding-top:24px}}
-@media (max-width:560px){.warum ul{grid-template-columns:1fr}}
+@media (max-width:1000px){.warum ul{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.warum{padding:56px 0}.warum ul{grid-template-columns:1fr}}
 .google{background:var(--grau);padding:28px 0}
 .google p{border:2px dashed #c9cdd6;padding:18px 20px;font-size:.95rem}
 /* Abschnittstitel */
@@ -260,7 +257,7 @@ footer .social svg{width:26px;height:26px}
     </div>
   </section>
   <section class="warum">
-    <div class="warum-text">
+    <div class="inner">
       <h2>Warum du bei der Akademie Neurodiversität richtig bist</h2>
       <ul>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="16" width="36" height="24" rx="3"/><path d="M18 16v-5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5M6 26h36M21 26v4h6v-4"/></svg><p>Ein praxiserprobtes System statt einzelner Tipps, das dich Schritt für Schritt zu echter Handlungssicherheit bringt.</p></li>
@@ -269,7 +266,6 @@ footer .social svg{width:26px;height:26px}
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 41S7 31 7 18.5A8.5 8.5 0 0 1 24 13a8.5 8.5 0 0 1 17 5.5C41 31 24 41 24 41z"/></svg><p>Lebenslanger Zugang und eine Gemeinschaft, die auch nach der Fortbildung bleibt.</p></li>
       </ul>
     </div>
-    <div class="warum-bild"><img src="bilder/enno.webp" alt="Enno Eirich, Gründer der Akademie Neurodiversität" width="700" height="840" loading="lazy"></div>
   </section>
   <section class="zahlen">
     <div class="inner">
