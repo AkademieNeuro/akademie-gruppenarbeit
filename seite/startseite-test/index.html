@@ -13,26 +13,28 @@
 <link rel="preload" href="bilder/header.webp" as="image" fetchpriority="high">
 <style>
 @font-face{font-family:Roboto;src:url(schrift/roboto-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Roboto;src:url(schrift/roboto-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:Roboto;src:url(schrift/roboto-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Roboto Slab";src:url(schrift/roboto-slab-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Roboto Slab";src:url(schrift/roboto-slab-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 :root{
-  --kompetenz:#183154;--klarheit:#545354;--waerme:#B77229;--vertrauen:#E9501C;--ausdauer:#BE1622;
+  --kompetenz:#0A336C;--orange2:#D87228;--schrift:#111;--klarheit:#545354;--waerme:#B77229;--vertrauen:#E9501C;--ausdauer:#BE1622;
   --rose:#FCEEEA;--rose2:#FBE2DB;--grau:#F1F2F5;--weiss:#fff;
   --text:Roboto,Arial,sans-serif;--slab:"Roboto Slab",Georgia,serif;
   --breite:1160px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--text);font-size:16px;line-height:1.55;color:var(--klarheit);background:var(--weiss)}
+body{margin:0;font-family:var(--text);font-size:16px;line-height:1.5;color:var(--schrift);background:var(--weiss)}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--slab);color:var(--kompetenz);line-height:1.25;margin:0;text-wrap:balance}
 p{margin:0}
 .inner{max-width:var(--breite);margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left))}
 .eyebrow{font-family:var(--slab);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--vertrauen);font-size:.95rem}
-.btn{display:inline-block;background:var(--vertrauen);color:#fff;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.92rem;padding:13px 22px;border-radius:2px;transition:background .2s}
+.btn{display:inline-block;background:var(--vertrauen);color:#fff;text-decoration:none;font-weight:500;text-transform:uppercase;letter-spacing:.5px;font-size:16px;padding:12px 24px;border-radius:0;transition:background .2s}
 .btn:hover{background:#c9410f}
+.btn.b2{background:var(--orange2)}.btn.b2:hover{background:#b85e1f}
 .btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--waerme);outline-offset:3px}
 .skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:20}
 .skip:focus{left:8px}
@@ -40,17 +42,17 @@ p{margin:0}
 /* Kopfzeile */
 .kopf{position:relative;z-index:10;background:#fff}
 .kopf .inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
-.logo{background:var(--kompetenz);align-self:flex-start;padding:22px 26px;margin-bottom:-36px;display:block}
-.logo img{width:190px}
+.logo{background:var(--kompetenz);align-self:flex-start;padding:26px 34px;margin-bottom:-40px;display:block}
+.logo img{width:220px}
 nav ul{list-style:none;margin:0;padding:0}
-.menu{display:flex;align-items:center;gap:26px;font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--kompetenz)}
+.menu{display:flex;align-items:center;gap:30px;font-size:15px;font-weight:400;text-transform:uppercase;letter-spacing:.5px;color:#000}
 .menu a{text-decoration:none}
 .menu > li{position:relative}
 .menu li ul{position:absolute;top:100%;left:-14px;background:#fff;min-width:270px;padding:10px 0;box-shadow:0 10px 30px -12px rgba(24,49,84,.35);display:none;text-transform:none;letter-spacing:0;font-weight:400}
 .menu li:hover ul,.menu li:focus-within ul{display:block}
 .menu li ul a{display:block;padding:8px 18px}
 .menu li ul a:hover{background:var(--grau)}
-.kontakt{border:2px solid var(--vertrauen);color:var(--vertrauen)!important;padding:9px 16px}
+.kontakt{border:3px solid var(--vertrauen);color:var(--vertrauen)!important;padding:10px 22px;font-weight:500;font-size:16px}
 .mobil{display:none}
 @media (max-width:900px){
   .menu{display:none}
@@ -66,14 +68,14 @@ nav ul{list-style:none;margin:0;padding:0}
 
 /* Hero */
 .hero{position:relative;background:var(--grau) url(bilder/header.webp) center/cover no-repeat;min-height:560px;display:flex;align-items:center}
-.hero .inner{width:100%;display:flex;justify-content:flex-end}
-.hero-box{background:rgba(241,242,245,.97);max-width:560px;padding:44px 48px;display:flex;flex-direction:column;gap:18px}
-.hero h1{font-size:clamp(1.45rem,2.6vw,1.75rem);text-transform:uppercase;line-height:1.2}
-.hero-box p{color:var(--waerme)}
-@media (max-width:700px){.hero{min-height:0;background-size:220%;background-position:top center;padding-top:190px}.hero .inner{padding:0}.hero-box{padding:28px 20px;background:var(--grau)}}
+.hero .inner{width:100%;max-width:none;padding:0;display:flex;justify-content:flex-end}
+.hero-box{background:#F1F3F7;width:min(850px,60%);padding:64px 70px;display:flex;flex-direction:column;gap:18px}
+.hero h1{font-size:clamp(1.35rem,2.2vw,1.6rem);text-transform:uppercase;line-height:1.25;letter-spacing:.6px}
+.hero-box p{color:var(--orange2);font-weight:500}
+@media (max-width:700px){.hero{min-height:0;background-size:220%;background-position:top center;padding-top:190px}.hero .inner{padding:0}.hero-box{width:100%;padding:28px 20px;background:var(--grau)}}
 
 .intro{background:var(--rose);padding:64px 0}
-.intro p{color:var(--kompetenz)}
+.intro p{color:var(--kompetenz);font-family:var(--slab);font-size:17px;line-height:1.5}
 .intro p+p{margin-top:14px}
 
 /* Enno */
@@ -81,6 +83,7 @@ nav ul{list-style:none;margin:0;padding:0}
 .enno .inner{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center}
 .enno .inner>div{padding-bottom:40px}
 .enno p+p{margin-top:12px}
+.at.links{text-align:left;margin:0 0 18px;padding:0;max-width:none}
 .enno .lead,.cta .lead{font-family:var(--slab);font-weight:700;color:var(--kompetenz);font-size:1.2rem;line-height:1.3;margin-bottom:14px}
 .enno .btn{margin-top:22px}
 .enno img{width:100%;max-width:380px;justify-self:center;align-self:end}
@@ -114,7 +117,7 @@ nav ul{list-style:none;margin:0;padding:0}
 .google p{border:2px dashed #c9cdd6;padding:18px 20px;font-size:.95rem}
 
 /* Einheitliche Abschnittstitel */
-.at{display:block;text-align:center;font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.2;margin:0 auto 32px;max-width:900px;padding-inline:20px}
+.at{display:block;text-align:center;font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--kompetenz);line-height:1.2;margin:0 auto 32px;max-width:900px;padding-inline:20px}
 
 .intro .at{margin-bottom:24px}
 .zahlen .at{margin-bottom:32px}
@@ -136,7 +139,7 @@ nav ul{list-style:none;margin:0;padding:0}
 .karte{background:#fff;padding:36px;display:flex;flex-direction:column;gap:14px}
 .karte h3{font-size:1.25rem;margin-top:-6px}
 .karte .btn{align-self:flex-start;margin-top:auto}
-.karte .klein{font-family:var(--slab);color:var(--waerme);font-weight:700;font-size:.95rem}
+.karte .klein{font-family:var(--slab);color:var(--orange2);font-weight:700;font-size:.95rem}
 @media (max-width:760px){.zwei{grid-template-columns:1fr}}
 
 .fortbildungen{background:var(--rose2);padding:64px 0}
@@ -148,11 +151,12 @@ nav ul{list-style:none;margin:0;padding:0}
 @media (max-width:900px){.raster{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.raster{grid-template-columns:1fr}}
 .stimme{background:#fff;padding:26px;display:flex;flex-direction:column;gap:12px}
-.stimme header{display:flex;gap:14px;align-items:center}
-.stimme img{width:64px;height:64px;border-radius:50%;flex:none}
-.stimme b{color:var(--kompetenz);display:block}
-.stimme small{display:block;font-size:.82rem;line-height:1.35}
-.stimme q{font-family:var(--slab);color:var(--kompetenz);font-weight:700;font-size:1.05rem;line-height:1.35;quotes:"„" "“"}
+.stimme header{display:flex;align-items:flex-end}
+.stimme img{width:120px;height:120px;border-radius:50%;flex:none;position:relative;z-index:1;object-fit:cover}
+.stimme header>div{margin-left:-28px;padding-bottom:2px;min-width:0;flex:1}
+.stimme b{display:block;background:var(--vertrauen);color:#fff;text-transform:uppercase;font-weight:500;font-size:15px;letter-spacing:.5px;padding:5px 14px 5px 40px}
+.stimme small{display:block;font-size:13px;line-height:1.3;font-weight:700;color:var(--kompetenz);padding:6px 0 0 40px;min-height:3.9em}
+.stimme q{font-family:var(--text);color:#000;font-weight:700;font-size:17px;line-height:1.35;quotes:"„" "“"}
 .stimme p{font-size:.95rem}
 .slider{position:relative}
 .spur{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 44px)/3);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
@@ -160,10 +164,10 @@ nav ul{list-style:none;margin:0;padding:0}
 .spur .stimme{scroll-snap-align:start}
 @media (max-width:900px){.spur{grid-auto-columns:calc((100% - 22px)/2)}}
 @media (max-width:600px){.spur{grid-auto-columns:88%}}
-.pfeil{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:var(--kompetenz);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 6px 16px -8px rgba(24,49,84,.6)}
+.pfeil{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:56px;border:0;background:none;color:var(--kompetenz);font-size:3rem;line-height:1;cursor:pointer}
 .pfeil:disabled{opacity:.3;cursor:default}
-.zurueck{left:-22px}.weiter{right:-22px}
-@media (max-width:1240px){.zurueck{left:4px}.weiter{right:4px}}
+.zurueck{left:-48px}.weiter{right:-48px}
+@media (max-width:1280px){.zurueck{left:-6px}.weiter{right:-6px}}
 .stimmen .btn{margin-top:30px}
 
 /* Blog */
@@ -172,10 +176,11 @@ nav ul{list-style:none;margin:0;padding:0}
 .artikel{background:var(--grau);display:flex;flex-direction:column;text-decoration:none}
 .artikel img{aspect-ratio:3/2;object-fit:cover;width:100%}
 .artikel div{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
-.artikel .kat{align-self:flex-start;background:var(--vertrauen);color:#fff;font-size:.8rem;padding:4px 10px;margin-top:-36px}
-.artikel h3{font-size:1.1rem;line-height:1.3}
-.artikel p{font-size:.92rem}
-.artikel .weiter{margin-top:auto;color:var(--kompetenz);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.artikel .kat{align-self:flex-end;background:var(--orange2);color:#fff;font-size:15px;padding:6px 22px;margin:-50px -24px 4px 0}
+.artikel h3{font-size:1.3rem;line-height:1.25;letter-spacing:.3px}
+.artikel p{font-size:15px;color:#000}
+.artikel .weiter{margin-top:auto;color:var(--kompetenz);font-weight:500;font-size:15px;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+.artikel .weiter::before{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%273%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1%27/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%273%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1%27/%3E%3C/svg%3E") center/contain no-repeat}
 .artikel:hover h3{text-decoration:underline}
 
 .cta{background:#FDF4EE;padding:64px 0}
@@ -193,7 +198,8 @@ footer ul{list-style:none;margin:0;padding:0;font-size:.92rem}
 footer li a{text-decoration:underline}
 footer .social{display:flex;gap:14px}
 footer .social svg{width:26px;height:26px}
-.copy{background:#0f2340;font-size:.82rem;padding:12px 0}
+.copy{background:#06244d;font-size:.82rem;padding:12px 0}
+footer .copy .inner{display:block;padding-block:0}
 @media (max-width:760px){footer .inner{grid-template-columns:1fr}}
 
 /* Neu: Fotos */
@@ -206,11 +212,11 @@ footer .social svg{width:26px;height:26px}
 .cta img{width:100%;height:auto;border-radius:4px}
 /* Neu: Stimmen */
 .spur{align-items:start}
-.stimme .ini{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-family:var(--slab);font-weight:700;font-size:1.6rem}
+.stimme .ini{width:120px;height:120px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-family:var(--slab);font-weight:700;font-size:1.6rem}
 .fbtag{align-self:flex-start;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:999px;color:#fff;background:var(--kompetenz)}
 .fbtag.adhs{background:var(--waerme)}
 .stimme .text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
-.stimme .text p{font-size:.95rem}
+.stimme .text p{font-size:15px;color:#000}
 .stimme .text p+p{margin-top:10px}
 .stimme.offen .text{display:block;-webkit-line-clamp:unset}
 .stimme .mehr{align-self:flex-start;font:inherit;font-size:.85rem;font-weight:700;color:var(--vertrauen);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
@@ -288,9 +294,9 @@ footer .social svg{width:26px;height:26px}
   </section>
   <section class="intro">
     <div class="inner">
-      <h2 class="at">Kennst du das?</h2>
       <div class="intro-grid">
         <div>
+          <h2 class="at links">Kennst du das?</h2>
       <p>Ein Kind hält sich die Ohren zu und zieht sich zurück. Ein anderes steht nach jeder Anweisung ratlos da oder explodiert, wenn der Bauklotzturm einstürzt. Du möchtest Kindern im Autismus-Spektrum und mit AD(H)S die bestmögliche Unterstützung geben, doch die gelernten Methoden greifen in der Praxis oft nicht so, wie du es dir erhoffst.</p>
       <p>Wenn du als <strong>pädagogische Fachkraft, Lehrkraft, Schulbegleitung oder Therapeut:in</strong> nach einem klaren System und praxiserprobten Werkzeugen suchst, die wirklich einen Unterschied machen, bist du bei uns genau richtig.</p>
         </div>
@@ -337,7 +343,7 @@ footer .social svg{width:26px;height:26px}
           <a class="btn" href="https://akademieneurodiversitaet.com/autismus-fortbildung/">Nähere Infos</a>
         </article>
         <article class="karte bild">
-          <img src="bilder/schwerpunkt-adhs.webp" alt="Junge greift neugierig nach einem bunten Lernspiel" width="800" height="533" loading="lazy">
+          <img src="bilder/schwerpunkt-adhs.webp" alt="Pädagogin übt mit einem Jungen am Rechenschieber" width="800" height="533" loading="lazy">
           <span class="klein">Fortbildung</span>
           <h3>AD(H)S-Pädagogik</h3>
           <p>Verwandle tägliche Reibung in <strong>erfolgreiche Lernmomente</strong>. Diese Fortbildung gibt dir die <strong>praxiserprobten Strategien</strong>, um Fokus zu fördern und Impulse gezielt zu lenken.</p>
@@ -347,13 +353,13 @@ footer .social svg{width:26px;height:26px}
     </div>
   </section>
   <section class="enno">
-    <h2 class="at">Aus der Praxis, für die Praxis</h2>
     <div class="inner">
       <div>
+        <h2 class="at links">Aus der Praxis, für die Praxis</h2>
         <p class="lead">Hallo, ich bin Enno Eirich, Gründer der Akademie Neurodiversität.</p>
         <p>In mehr als einem Jahrzehnt Praxiserfahrung habe ich eines immer wieder erlebt: Engagierte Fachkräfte stoßen an ihre Grenzen, weil die Lücke zwischen Theorie und dem anspruchsvollen Alltag riesig ist.</p>
         <p>Genau um diese Lücke zu schließen, wurde die Akademie gegründet. Unsere Mission ist es, dir praxiserprobte Werkzeuge und ein klares System zu geben, damit du wieder mit Sicherheit, Kompetenz und Souveränität arbeiten kannst.</p>
-        <a class="btn" href="https://akademieneurodiversitaet.com/ueber-mich/">Mehr über Enno</a>
+        <a class="btn b2" href="https://akademieneurodiversitaet.com/ueber-mich/">Mehr über Enno</a>
       </div>
       <img src="bilder/enno.webp" alt="Enno Eirich - Über die Akademie Neurodiversität" width="700" height="840" loading="lazy">
     </div>
@@ -404,11 +410,11 @@ footer .social svg{width:26px;height:26px}
           <article class="stimme" data-b="schule"><header><img src="bilder/stimme-julia-23.webp" alt="Kundenstimme Julia" width="64" height="64" loading="lazy"><div><b>Julia</b><small>Volksschullehrerin</small></div></header><span class="fbtag autismus">Autismus-Pädagogik</span><q>Sofort umsetzbar – und goldwert.</q><div class="text"><p>Die Fortbildung beinhaltet immens viel Wissen, bedacht aufgeteilt. Neben der Praxis konnte ich mir viel aneignen und gleich anwenden – das hat mir einen großen Handlungsspielraum in der Begleitung von Autist:innen eröffnet. Besonders hervorzuheben sind Ennos wohlwollende Haltung und seine Alltagsbeispiele, die das fundierte theoretische Wissen bereichern; der lebenslange Zugriff ist für mich unbezahlbar.</p></div><button type="button" class="mehr" aria-expanded="false">Ganze Geschichte lesen</button></article>
           <article class="stimme" data-b="beratung"><header><img src="bilder/stimme-alexandra-24.webp" alt="Kundenstimme Alexandra" width="64" height="64" loading="lazy"><div><b>Alexandra</b><small>Psychosoziale Beraterin mit eidg. Diplom</small></div></header><span class="fbtag autismus">Autismus-Pädagogik</span><q>Detaillierte Handouts – heute noch mein Nachschlagewerk.</q><div class="text"><p>Die Fortbildung habe ich als sehr bereichernd erlebt. Besonders wertvoll fand ich, dass ich die Inhalte selbstständig erarbeiten und mein Lerntempo selbst bestimmen konnte. Der regelmäßige Austausch in den Praxis-Stammtischen eröffnet neue Perspektiven – insgesamt fühle ich mich fachlich wie persönlich gestärkt.</p></div><button type="button" class="mehr" aria-expanded="false">Ganze Geschichte lesen</button></article>
         </div>
-        <button class="pfeil zurueck" type="button" id="zurueck" aria-label="Vorherige Stimmen">‹</button>
-        <button class="pfeil weiter" type="button" id="weiter" aria-label="Nächste Stimmen">›</button>
+        <button class="pfeil zurueck" type="button" id="zurueck" aria-label="Vorherige Stimmen">&#x2039;</button>
+        <button class="pfeil weiter" type="button" id="weiter" aria-label="Nächste Stimmen">&#x203A;</button>
       </div>
       <div class="stand"><div class="balken" aria-hidden="true"><i id="balken"></i></div><span id="zaehler" aria-live="polite"></span></div>
-      <a class="btn" href="https://akademieneurodiversitaet.com/erfolgsgeschichten/">Zur Seite mit allen Erfolgsgeschichten</a>
+      <a class="btn b2" href="https://akademieneurodiversitaet.com/erfolgsgeschichten/">Zur Seite mit allen Erfolgsgeschichten</a>
     </div>
   </section>
 
@@ -420,19 +426,19 @@ footer .social svg{width:26px;height:26px}
         <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-bei-kindern-verstehen/"><img src="bilder/blog-adhs-verstehen.webp" alt="Mädchen schaut am Schreibtisch verträumt zur Seite, ein typisches Bild für AD(H)S bei Kindern" width="720" height="480" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>AD(H)S bei Kindern verstehen: Ein Überblick für pädagogische Fachkräfte</h3><p>Ein Kind startet dreimal in dieselbe Aufgabe und kommt nie über den ersten Satz hinaus. Ein anderes ruft die Antwort in die Runde …</p><span class="weiter">Weiterlesen</span></div></a>
         <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-im-unterricht/"><img src="bilder/blog-adhs-unterricht.webp" alt="Junge lehnt lässig auf dem Tisch, mit einem Klebezettel auf der Stirn" width="720" height="480" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>AD(H)S im Unterricht: 7 Strukturhilfen, die sofort wirken</h3><p>Ein Kind kramt zum dritten Mal in der Federmappe, obwohl die Aufgabe längst erklärt ist. Ein anderes steht mitten im Rechenweg auf …</p><span class="weiter">Weiterlesen</span></div></a>
       </div>
-      <a class="btn mehrblog" href="https://akademieneurodiversitaet.com/neurodiversitaet-praxiswissen/">Alle Blogartikel</a>
+      <a class="btn b2 mehrblog" href="https://akademieneurodiversitaet.com/neurodiversitaet-praxiswissen/">Alle Blogartikel</a>
     </div>
   </section>
 
   <section class="cta">
-    <h2 class="at">Bereit, den Unterschied zu machen?</h2>
     <div class="inner">
       <img src="bilder/cta.webp" alt="Pädagogin und Mädchen bauen lachend mit bunten Holzklötzen" width="900" height="600" loading="lazy">
       <div>
+        <h2 class="at links">Bereit, den Unterschied zu machen?</h2>
         <p>Jede große Veränderung beginnt mit dem ersten, konkreten Schritt. Gewinne sofort an Sicherheit – mit unseren <strong>praxiserprobten Strategien für Autismus</strong> oder den entscheidenden <strong>Schlüsseln zum Verständnis von AD(H)S</strong>. Wähle jetzt die <strong>Soforthilfe</strong>, die du für deinen Alltag brauchst.</p>
         <div class="knoepfe">
-          <a class="btn" href="https://akademieneurodiversitaet.com/10-praxisnahe-autismus-tipps/">Praxis-Tipps Autismus für 0 €</a>
-          <a class="btn" href="https://akademieneurodiversitaet.com/5-praxisnahe-adhs-tipps/">5 Schlüssel für AD(H)S für 0 €</a>
+          <a class="btn b2" href="https://akademieneurodiversitaet.com/10-praxisnahe-autismus-tipps/">Praxis-Tipps Autismus für 0 €</a>
+          <a class="btn b2" href="https://akademieneurodiversitaet.com/5-praxisnahe-adhs-tipps/">5 Schlüssel für AD(H)S für 0 €</a>
         </div>
       </div>
     </div>
@@ -468,7 +474,7 @@ footer .social svg{width:26px;height:26px}
 function sichtbar(){return [].filter.call(s.children,function(k){return !k.hidden})}
 function zeichne(){var k=sichtbar(),n=k.length;if(!n){zl.textContent="";return}
 var breite=k[0].getBoundingClientRect().width+22,proSeite=Math.max(1,Math.round(s.clientWidth/breite)),i=Math.round(s.scrollLeft/breite),bis=Math.min(n,i+proSeite);
-zl.textContent=(proSeite>1?(i+1)+"–"+bis:(i+1))+" von "+n;bal.style.width=(bis/n*100)+"%";
+var seiten=Math.ceil(n/proSeite),s1=Math.min(seiten,Math.ceil(bis/proSeite));zl.textContent=seiten>1?(proSeite>1?"Seite ":"")+s1+" von "+seiten:n+(n===1?" Stimme":" Stimmen");bal.style.width=(s1/seiten*100)+"%";
 z.disabled=s.scrollLeft<5;w.disabled=s.scrollLeft+s.clientWidth>=s.scrollWidth-5}
 z.onclick=function(){s.scrollBy({left:-s.clientWidth})};w.onclick=function(){s.scrollBy({left:s.clientWidth})};
 var t;s.addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(zeichne,60)});window.addEventListener("resize",zeichne);
