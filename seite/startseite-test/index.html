@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Akademie Neurodiversität | praxisorientierte Fortbildungen</title>
+<meta name="description" content="Entdecke die Angebote der Akademie Neurodiversität - Fortbildungen für die Begleitung von Kindern mit Autismus &amp; AD(H)S.">
+<!-- Testseite: nicht in Google aufnehmen, Original ist die WordPress-Seite -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://akademieneurodiversitaet.com/">
+<link rel="preload" href="schrift/roboto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="schrift/roboto-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="bilder/header.webp" as="image" fetchpriority="high">
+<style>
+@font-face{font-family:Roboto;src:url(schrift/roboto-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Roboto;src:url(schrift/roboto-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Roboto Slab";src:url(schrift/roboto-slab-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Roboto Slab";src:url(schrift/roboto-slab-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --kompetenz:#183154;--klarheit:#545354;--waerme:#B77229;--vertrauen:#E9501C;--ausdauer:#BE1622;
+  --rose:#FCEEEA;--rose2:#FBE2DB;--grau:#F1F2F5;--weiss:#fff;
+  --text:Roboto,Arial,sans-serif;--slab:"Roboto Slab",Georgia,serif;
+  --breite:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--text);font-size:17px;line-height:1.6;color:var(--klarheit);background:var(--weiss)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--slab);color:var(--kompetenz);line-height:1.25;margin:0;text-wrap:balance}
+p{margin:0}
+.inner{max-width:var(--breite);margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left))}
+.eyebrow{font-family:var(--slab);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--vertrauen);font-size:.95rem}
+.btn{display:inline-block;background:var(--vertrauen);color:#fff;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.92rem;padding:13px 22px;border-radius:2px;transition:background .2s}
+.btn:hover{background:#c9410f}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--waerme);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:20}
+.skip:focus{left:8px}
+
+/* Kopfzeile */
+.kopf{position:relative;z-index:10;background:#fff}
+.kopf .inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.logo{background:var(--kompetenz);align-self:flex-start;padding:22px 26px;margin-bottom:-36px;display:block}
+.logo img{width:190px}
+nav ul{list-style:none;margin:0;padding:0}
+.menu{display:flex;align-items:center;gap:26px;font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--kompetenz)}
+.menu a{text-decoration:none}
+.menu > li{position:relative}
+.menu li ul{position:absolute;top:100%;left:-14px;background:#fff;min-width:270px;padding:10px 0;box-shadow:0 10px 30px -12px rgba(24,49,84,.35);display:none;text-transform:none;letter-spacing:0;font-weight:400}
+.menu li:hover ul,.menu li:focus-within ul{display:block}
+.menu li ul a{display:block;padding:8px 18px}
+.menu li ul a:hover{background:var(--grau)}
+.kontakt{border:2px solid var(--vertrauen);color:var(--vertrauen)!important;padding:9px 16px}
+.mobil{display:none}
+@media (max-width:900px){
+  .menu{display:none}
+  .mobil{display:block}
+  .logo{margin-bottom:0;padding:14px 16px}.logo img{width:150px}
+  .kopf .inner{min-height:0;padding-inline:0 20px}
+  .mobil summary{list-style:none;cursor:pointer;font-weight:700;color:var(--kompetenz);text-transform:uppercase;font-size:.9rem;padding:10px 0}
+  .mobil summary::-webkit-details-marker{display:none}
+  .mobil ul{position:absolute;left:0;right:0;top:100%;background:#fff;padding:10px 20px 20px;box-shadow:0 14px 24px -14px rgba(24,49,84,.4)}
+  .mobil li a{display:block;padding:9px 0;text-decoration:none;color:var(--kompetenz);border-bottom:1px solid var(--grau)}
+  .mobil li.sub a{padding-left:16px;color:var(--klarheit)}
+}
+
+/* Hero */
+.hero{position:relative;background:var(--grau) url(bilder/header.webp) center/cover no-repeat;min-height:560px;display:flex;align-items:center}
+.hero .inner{width:100%;display:flex;justify-content:flex-end}
+.hero-box{background:rgba(241,242,245,.97);max-width:560px;padding:44px 48px;display:flex;flex-direction:column;gap:18px}
+.hero h1{font-size:clamp(1.6rem,3vw,2.1rem);text-transform:uppercase}
+.hero-box p{color:var(--waerme)}
+@media (max-width:700px){.hero{min-height:0;background-size:220%;background-position:top center;padding-top:190px}.hero .inner{padding:0}.hero-box{padding:28px 20px;background:var(--grau)}}
+
+.intro{background:var(--rose);padding:64px 0}
+.intro p{max-width:72ch;color:var(--kompetenz);font-size:1.05rem}
+.intro p+p{margin-top:14px}
+
+/* Enno */
+.enno{background:var(--grau);padding:72px 0}
+.enno .inner{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center}
+.enno h2{font-size:1.25rem;margin:10px 0 14px}
+.enno p+p{margin-top:12px}
+.enno .eyebrow{color:var(--ausdauer);font-size:1.35rem}
+.enno .btn{margin-top:22px}
+.enno img{width:100%;max-width:400px;justify-self:center}
+@media (max-width:800px){.enno .inner{grid-template-columns:1fr;gap:32px}}
+
+/* Zahlen */
+.zahlen{background:var(--rose);padding:64px 0}
+.zahlen h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:28px}
+.zahlen ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.zahlen strong{display:block;font-family:var(--slab);color:var(--ausdauer);font-size:clamp(2.2rem,4vw,3rem);line-height:1.1;font-variant-numeric:tabular-nums}
+.zahlen span{color:var(--kompetenz);font-size:.95rem}
+@media (max-width:760px){.zahlen ul{grid-template-columns:1fr 1fr}}
+
+/* Abschnittstitel */
+.titel{display:inline-block;background:var(--kompetenz);color:#fff;font-family:var(--slab);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.25rem,2.6vw,1.75rem);padding:12px 28px;text-align:center}
+.zentriert{text-align:center}
+
+.schwerpunkte{background:var(--rose2);padding:64px 0 72px}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.karte{background:#fff;padding:36px;display:flex;flex-direction:column;gap:14px}
+.karte h3{font-size:1.25rem}
+.karte .btn{align-self:flex-start;margin-top:auto}
+@media (max-width:760px){.zwei{grid-template-columns:1fr}}
+
+.fortbildungen{padding:72px 0}
+.fb{background:var(--rose);text-align:center;align-items:center}
+.fb svg{width:64px;height:64px;color:var(--kompetenz)}
+.fb .klein{font-family:var(--slab);color:var(--waerme);font-weight:500}
+.fb h3{font-size:1.5rem;margin-top:-8px}
+.fb .btn{align-self:center}
+
+/* Stimmen */
+.stimmen{background:var(--grau);padding:72px 0}
+.stimmen h2.eyebrow{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:32px}
+.raster{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:900px){.raster{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.raster{grid-template-columns:1fr}}
+.stimme{background:#fff;padding:26px;display:flex;flex-direction:column;gap:12px}
+.stimme header{display:flex;gap:14px;align-items:center}
+.stimme img{width:64px;height:64px;border-radius:50%;flex:none}
+.stimme b{color:var(--kompetenz);display:block}
+.stimme small{display:block;font-size:.82rem;line-height:1.35}
+.stimme q{font-family:var(--slab);color:var(--kompetenz);font-weight:500;quotes:"„" "“"}
+.stimme p{font-size:.95rem}
+.mehr{margin-top:22px}
+.mehr summary{cursor:pointer;color:var(--kompetenz);font-weight:700;padding:8px 0}
+.mehr .raster{margin-top:16px}
+.stimmen .btn{margin-top:30px}
+
+/* Blog */
+.blog{padding:72px 0}
+.blog h2.eyebrow{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:32px}
+.artikel{background:var(--grau);display:flex;flex-direction:column;text-decoration:none}
+.artikel img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.artikel div{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.artikel .kat{align-self:flex-start;background:var(--vertrauen);color:#fff;font-size:.8rem;padding:4px 10px;margin-top:-36px}
+.artikel h3{font-size:1.1rem}
+.artikel p{font-size:.92rem}
+.artikel .weiter{margin-top:auto;color:var(--kompetenz);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.artikel:hover h3{text-decoration:underline}
+
+.cta{background:#FDF4EE;padding:72px 0}
+.cta .inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.cta h2{font-size:clamp(1.3rem,2.4vw,1.6rem);text-transform:uppercase;margin-bottom:14px}
+.cta .knoepfe{display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:24px}
+@media (max-width:760px){.cta .inner{grid-template-columns:1fr}}
+
+/* Fußzeile */
+footer{background:var(--kompetenz);color:#fff}
+footer .inner{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-block:56px}
+footer img{width:210px}
+footer .rahmen{display:inline-block;border:1.5px solid #fff;color:#fff;text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;padding:9px 14px;margin-bottom:12px}
+footer h3{color:#fff;font-family:var(--text);font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;margin:16px 0 8px}
+footer ul{list-style:none;margin:0;padding:0;font-size:.92rem}
+footer li a{text-decoration:underline}
+footer .social{display:flex;gap:14px}
+footer .social svg{width:26px;height:26px}
+.copy{background:#0f2340;font-size:.82rem;padding:12px 0}
+@media (max-width:760px){footer .inner{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="inner">
+    <a class="logo" href="https://akademieneurodiversitaet.com/"><img src="bilder/logo-weiss.svg" alt="Logo der Akademie Neurodiversität" width="190" height="70"></a>
+    <nav aria-label="Hauptmenü">
+      <ul class="menu">
+        <li><a href="https://akademieneurodiversitaet.com/angebote-autismus-paedagogik/">Autismus ▾</a>
+          <ul>
+            <li><a href="https://akademieneurodiversitaet.com/10-praxisnahe-autismus-tipps/">Gratis-Leitfaden „10 Praxistipps“</a></li>
+            <li><a href="https://akademieneurodiversitaet.com/autismus-starterbox/">Die „Autismus-Starterbox“</a></li>
+            <li><a href="https://akademieneurodiversitaet.com/autismus-fortbildung/">Fortbildung „Autismus-Pädagogik“</a></li>
+          </ul></li>
+        <li><a href="https://akademieneurodiversitaet.com/angebote-adhs-paedagogik/">AD(H)S ▾</a>
+          <ul>
+            <li><a href="https://akademieneurodiversitaet.com/5-praxisnahe-adhs-tipps/">Praxis-Impuls „5 AD(H)S-Schlüssel“</a></li>
+            <li><a href="https://akademieneurodiversitaet.com/adhs-fortbildung/">Fortbildung „AD(H)S-Pädagogik“</a></li>
+          </ul></li>
+        <li><a href="https://akademieneurodiversitaet.com/erfolgsgeschichten/">Erfolgsgeschichten</a></li>
+        <li><a href="https://akademieneurodiversitaet.com/ueber-die-akademie-neurodiversitaet/">Über</a></li>
+        <li><a href="https://akademieneurodiversitaet.com/neurodiversitaet-praxiswissen/">Blog</a></li>
+        <li><a class="kontakt" href="https://akademieneurodiversitaet.com/kontakt/">Kontakt</a></li>
+      </ul>
+      <details class="mobil">
+        <summary>Menü ☰</summary>
+        <ul>
+          <li><a href="https://akademieneurodiversitaet.com/angebote-autismus-paedagogik/">Autismus</a></li>
+          <li class="sub"><a href="https://akademieneurodiversitaet.com/10-praxisnahe-autismus-tipps/">Gratis-Leitfaden „10 Praxistipps“</a></li>
+          <li class="sub"><a href="https://akademieneurodiversitaet.com/autismus-starterbox/">Die „Autismus-Starterbox“</a></li>
+          <li class="sub"><a href="https://akademieneurodiversitaet.com/autismus-fortbildung/">Fortbildung „Autismus-Pädagogik“</a></li>
+          <li><a href="https://akademieneurodiversitaet.com/angebote-adhs-paedagogik/">AD(H)S</a></li>
+          <li class="sub"><a href="https://akademieneurodiversitaet.com/5-praxisnahe-adhs-tipps/">Praxis-Impuls „5 AD(H)S-Schlüssel“</a></li>
+          <li class="sub"><a href="https://akademieneurodiversitaet.com/adhs-fortbildung/">Fortbildung „AD(H)S-Pädagogik“</a></li>
+          <li><a href="https://akademieneurodiversitaet.com/erfolgsgeschichten/">Erfolgsgeschichten</a></li>
+          <li><a href="https://akademieneurodiversitaet.com/ueber-die-akademie-neurodiversitaet/">Über</a></li>
+          <li><a href="https://akademieneurodiversitaet.com/neurodiversitaet-praxiswissen/">Blog</a></li>
+          <li><a href="https://akademieneurodiversitaet.com/kontakt/">Kontakt</a></li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+  <section class="hero">
+    <div class="inner">
+      <div class="hero-box">
+        <span class="eyebrow">Akademie Neurodiversität</span>
+        <h1>Vom täglichen Reagieren ins souveräne Begleiten</h1>
+        <p>Starte jetzt mit unseren praxisorientierten Fortbildungen und gewinne die Souveränität, die du für die Begleitung von Kindern mit Autismus und AD(H)S brauchst.</p>
+        <div><a class="btn" href="#fortbildungen">Fortbildungen entdecken</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="inner">
+      <p>Der pädagogische Alltag stellt dich täglich vor besondere Herausforderungen. Du möchtest Kindern im Autismus-Spektrum und mit AD(H)S die bestmögliche Unterstützung bieten, doch oft funktionieren die gelernten Methoden in der Praxis nicht wie erhofft.</p>
+      <p>Wenn du als <strong>Pädagogische Fachkraft, Lehrpersonal, Schulbegleitung oder Therapeut:in</strong> nach einem klaren Fahrplan und praxiserprobten Werkzeugen suchst, die wirklich einen Unterschied machen, bist du bei uns genau richtig.</p>
+    </div>
+  </section>
+
+  <section class="enno">
+    <div class="inner">
+      <div>
+        <span class="eyebrow">Aus der Praxis, für die Praxis.</span>
+        <h2>Hallo, ich bin Enno Eirich, Gründer der Akademie Neurodiversität.</h2>
+        <p>In mehr als einem Jahrzehnt Praxiserfahrung habe ich eines immer wieder erlebt: Engagierte Fachkräfte stoßen an ihre Grenzen, weil die Lücke zwischen Theorie und dem anspruchsvollen Alltag riesig ist.</p>
+        <p>Genau um diese Lücke zu schließen, wurde die Akademie gegründet. Unsere Mission ist es, dir praxiserprobte Werkzeuge und ein klares System zu geben, damit du wieder mit Sicherheit, Kompetenz und Souveränität arbeiten kannst.</p>
+        <a class="btn" href="https://akademieneurodiversitaet.com/ueber-mich/">Mehr über uns erfahren</a>
+      </div>
+      <img src="bilder/enno.webp" alt="Enno Eirich - Über die Akademie Neurodiversität" width="700" height="840" loading="lazy">
+    </div>
+  </section>
+
+  <section class="zahlen">
+    <div class="inner">
+      <h2>Meine Erfahrung in Zahlen</h2>
+      <ul>
+        <li><strong>&gt; 13</strong><span>Jahre Praxiserfahrung</span></li>
+        <li><strong>3.150+</strong><span>Stunden in der direkten Förderung</span></li>
+        <li><strong>950+</strong><span>Beratungsgespräche mit Fachkräften &amp; Eltern</span></li>
+        <li><strong>100+</strong><span>gegebene Fortbildungen &amp; Workshops</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="schwerpunkte">
+    <div class="inner">
+      <div class="zentriert"><h2 class="titel">Entdecke unsere Schwerpunkte</h2></div>
+      <div class="zwei">
+        <article class="karte">
+          <h3>Autismus-Pädagogik</h3>
+          <p>Hier findest du alles, was du für eine souveräne Begleitung brauchst: praxiserprobte Strategien, tiefes Verständnis und einen klaren Fahrplan. Entdecke kostenlose Materialien und unsere umfassende Fortbildung, um Missverständnisse in Verstehen zu verwandeln und Kindern zu helfen, ihr volles Potenzial zu entfalten.</p>
+          <a class="btn" href="https://akademieneurodiversitaet.com/angebote-autismus-paedagogik/">Zu den Autismus-Angeboten</a>
+        </article>
+        <article class="karte">
+          <h3>AD(H)S-Pädagogik</h3>
+          <p>Verwandle tägliche Reibung in positive Energie. Hier lernst du, Impulse gezielt zu lenken und den Fokus zu stärken. Finde wertvolle Werkzeuge und unsere neue Fortbildung, um ein Umfeld zu schaffen, in dem Kinder mit AD(H)S aufblühen können und wieder mehr Freude am Lernen haben.</p>
+          <a class="btn" href="https://akademieneurodiversitaet.com/angebote-adhs-paedagogik/">Zu den AD(H)S-Angeboten</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fortbildungen" id="fortbildungen">
+    <div class="inner">
+      <div class="zentriert"><h2 class="titel">Fortbildungen im Überblick</h2></div>
+      <div class="zwei">
+        <article class="karte fb">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="52" height="36" rx="4"/><path d="M14 24h22M14 32h14M40 40l6-6 6 6"/><circle cx="46" cy="24" r="5"/></svg>
+          <span class="klein">Fortbildung</span>
+          <h3>Autismus-Pädagogik</h3>
+          <p>Begleite Kinder im Autismus-Spektrum <strong>sicher und kompetent</strong>. Diese Fortbildung gibt dir die <strong>Handlungssicherheit</strong> und das <strong>klare System</strong> für deinen anspruchsvollen Arbeitsalltag.</p>
+          <a class="btn" href="https://akademieneurodiversitaet.com/autismus-fortbildung/">Nähere Infos</a>
+        </article>
+        <article class="karte fb">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="36" r="14"/><path d="M38 22a14 14 0 1 1 6 24M19 36l4 4 8-8"/></svg>
+          <span class="klein">Fortbildung</span>
+          <h3>AD(H)S-Pädagogik</h3>
+          <p>Verwandle tägliche Reibung in <strong>erfolgreiche Lernmomente</strong>. Diese Fortbildung gibt dir die <strong>praxiserprobten Strategien</strong>, um Fokus zu fördern und Impulse gezielt zu lenken.</p>
+          <a class="btn" href="https://akademieneurodiversitaet.com/adhs-fortbildung/">Nähere Infos</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stimmen">
+    <div class="inner">
+      <h2 class="eyebrow">Stimmen zu unserer Arbeit</h2>
+      <div class="raster">
+        <article class="stimme"><header><img src="bilder/stimme-nadja.webp" alt="Kundenstimme Nadja" width="64" height="64" loading="lazy"><div><b>Nadja</b><small>Fachkraft im Schulbegleitungsbereich</small></div></header><q>Ein respektvoller, ressourcenorientierter Umgang mit dem Thema.</q><p>Die Fortbildung hat mich fachlich und persönlich sehr bereichert. Ich habe ein tieferes Verständnis für Menschen im Autismus-Spektrum und viele Denkanstöße für meinen pädagogischen Blick gewonnen. Besonders die praxisnahen Beispiele nehme ich mit – ich würde es jederzeit wieder machen.</p></article>
+        <article class="stimme"><header><img src="bilder/stimme-kathy.webp" alt="Kundenstimme Kathy" width="64" height="64" loading="lazy"><div><b>Kathy</b><small>Staatlich anerkannte Erzieherin und Inklusionsfachkraft</small></div></header><q>Wertvolle und vor allem wertschätzende Tipps.</q><p>Es war wirklich eine ganz tolle Fortbildung mit wertvollen, vor allem wertschätzenden Tipps. Auch die Lernplattform und die Community haben mich begeistert. Als Erzieherin und Inklusionsfachkraft in einer Kita werde ich auf jeden Fall weiterhin an den Praxis-Stammtischen teilnehmen. Absolut verdiente 5 Sterne!</p></article>
+        <article class="stimme"><header><img src="bilder/stimme-gerald.webp" alt="Kundenstimme Gerald" width="64" height="64" loading="lazy"><div><b>Gerald</b><small>Pädagoge, psychosozialer Berater und Referent</small></div></header><q>Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</q><p>Als Pädagoge und Vater eines Kindes mit AD(H)S kannte ich vieles bereits – trotzdem hat mir die Fortbildung einen völlig neuen Blick eröffnet. Das Gelernte konnte ich sofort im Familienalltag umsetzen. Meine wichtigste Erkenntnis: Nicht Druck verändert Verhalten, sondern Verständnis und Beziehung.</p></article>
+        <article class="stimme"><header><img src="bilder/stimme-carola.webp" alt="Kundenstimme Carola" width="64" height="64" loading="lazy"><div><b>Carola</b><small>Eltern- und Familienberatung, Kursleiterin</small></div></header><q>Flexibel, praxisnah und fachlich auf höchstem Niveau.</q><p>Die Fortbildung war sehr gut strukturiert. Besonders geschätzt habe ich, die Videos im eigenen Tempo bearbeiten zu können – wunderbar in meinen Berufsalltag integrierbar. Das Expertenwissen wird verständlich vermittelt, und die Praxis-Stammtische zur Fallbesprechung sind eine echte Bereicherung.</p></article>
+        <article class="stimme"><header><img src="bilder/stimme-julia.webp" alt="Kundenstimme Julia" width="64" height="64" loading="lazy"><div><b>Julia</b><small>Volksschullehrerin</small></div></header><q>Sofort umsetzbar – und goldwert.</q><p>Die Fortbildung beinhaltet immens viel Wissen, bedacht aufgeteilt. Vieles konnte ich mir aneignen und gleich anwenden – das hat mir einen großen Handlungsspielraum in der Begleitung von Autist:innen eröffnet. Besonders hervorzuheben sind Ennos wohlwollende Haltung und seine Alltagsbeispiele; der lebenslange Zugriff ist unbezahlbar.</p></article>
+        <article class="stimme"><header><img src="bilder/stimme-marie.webp" alt="Kundenstimme Marie" width="64" height="64" loading="lazy"><div><b>Marie</b><small>Erzieherin und Fachkraft für tiergestützte Interventionen</small></div></header><q>Direkt einsetzbar – auch in der tiergestützten Arbeit.</q><p>Eine sehr informative und praxisnahe Fortbildung, die mir großen Spaß gemacht hat. Sie hat meine Sichtweise und Haltung gegenüber Menschen im Autismus-Spektrum nachhaltig verändert. Besonders bereichernd sind die regelmäßigen Praxis-Stammtische mit ihren Fallbeispielen – sie runden das Angebot perfekt ab.</p></article>
+      </div>
+      <details class="mehr">
+        <summary>Weitere Stimmen anzeigen</summary>
+        <div class="raster">
+          <article class="stimme"><header><img src="bilder/stimme-carsten.webp" alt="Kundenstimme Carsten" width="64" height="64" loading="lazy"><div><b>Carsten</b><small>Sonderpädagoge</small></div></header><q>Professionell, effektiv und netzwerkorientiert</q><p>Ich habe schon viele Fortbildungen gemacht, keine war so gut strukturiert wie diese. Die Möglichkeit, alle Inhalte im eigenen Tempo zu erarbeiten und bei eventuell aufkommenden Fragen jederzeit bei den Stammtischen Antworten erhalten zu können erachte ich als ideal für wirklich jede/n.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-stefanie.webp" alt="Kundenstimme Stefanie" width="64" height="64" loading="lazy"><div><b>Stefanie</b><small>Heilpädagogin</small></div></header><q>Hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt.</q><p>Die Fortbildung „Autismus-Pädagogik“ hat mich in meiner Arbeit als Heilpädagogin sehr bestärkt. Ich konnte viele Themen nochmals vertiefen, aber auch Neues dazulernen. In den Live Calls fühlte man sich immer sehr gut begleitet und professionell beraten.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-yvonne.webp" alt="Kundenstimme Yvonne" width="64" height="64" loading="lazy"><div><b>Yvonne</b><small>Integrationslehrerin</small></div></header><q>Genau das Richtige – Gelerntes direkt anwenden.</q><p>Die Fortbildung ist für mich genau richtig. Ich kann alle Inhalte in meinem eigenen Tempo lernen, was perfekt zu meinem Alltag als Integrationslehrerin passt. Das Gelernte lässt sich direkt in der Praxis anwenden.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-alexandra.webp" alt="Kundenstimme Alexandra" width="64" height="64" loading="lazy"><div><b>Alexandra</b><small>Psychosoziale Beraterin mit eidg. Diplom</small></div></header><q>Fachlich wie persönlich gestärkt.</q><p>Besonders wertvoll war, dass ich mein Lerntempo selbst bestimmen konnte. Der Austausch in der Gruppe ermöglicht neue Perspektiven und gemeinsame Reflexion. Insgesamt fühle ich mich durch die Ausbildung fachlich wie persönlich gestärkt.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-barbara.webp" alt="Kundenstimme Barbara" width="64" height="64" loading="lazy"><div><b>Barbara</b><small>Sonderschullehrerin</small></div></header><q>Praxisnahe Hilfen für den Schulalltag.</q><p>Als Sonderschullehrerin ist die Fortbildung sehr hilfreich. Die vielen Inputs und praxisnahen Hilfestellungen lassen sich leicht in den Schulalltag integrieren. Die Lerninhalte und Live Calls sind sehr flexibel aufgebaut und gut umsetzbar.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-nicole.webp" alt="Kundenstimme Nicole" width="64" height="64" loading="lazy"><div><b>Nicole</b><small>Inhaberin einer Baby- und Kleinkinderschwimmschule</small></div></header><q>Eine echte Bereicherung – flexibel und praxisnah.</q><p>Das flexible Format ermöglicht es mir, die Inhalte in meinem eigenen Tempo zu erarbeiten. Besonders wertvoll sind die Fallbesprechungen und der wertschätzende Umgang. Ennos Praxiserfahrung hat die Fortbildung zu einer echten Bereicherung gemacht.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-dijana.webp" alt="Kundenstimme Dijana" width="64" height="64" loading="lazy"><div><b>Dijana</b><small>Lehrerin und Kinder- und Jugendbetreuerin</small></div></header><q>Individuelles Lerntempo, klar verständliche Inhalte.</q><p>Die Fortbildung war sehr wertvoll. Am hilfreichsten war für mich, dass das Tempo individuell anpassbar ist und die Lerninhalte klar und verständlich aufbereitet sind.</p></article>
+          <article class="stimme"><header><img src="bilder/stimme-cordula.webp" alt="Kundenstimme Cordula" width="64" height="64" loading="lazy"><div><b>Cordula</b><small>Beratungs- und Förderlehrkraft (BFZ), Psychologische Beratung und Coaching für Kinder und Jugendliche</small></div></header><q>Ein echter Augenöffner – praxisnah und fachlich fundiert.</q><p>Die Fortbildung hat mein Verständnis für Autismus deutlich vertieft und mir viele praxisnahe Impulse für meine Arbeit als Beratungs- und Förderlehrkraft gegeben. Besonders das Modul „Komorbiditäten und herausforderndes Verhalten“ hat mir neue Perspektiven eröffnet. Die Schritt-für-Schritt-Struktur hilft, das Wissen systematisch aufzubauen und mit dem eigenen Erfahrungsschatz abzugleichen.</p></article>
+        </div>
+      </details>
+      <a class="btn" href="https://akademieneurodiversitaet.com/erfolgsgeschichten/">Mehr Erfolgsgeschichten lesen</a>
+    </div>
+  </section>
+
+  <section class="blog">
+    <div class="inner">
+      <h2 class="eyebrow">Unsere neuesten Blogartikel</h2>
+      <div class="raster">
+        <a class="artikel" href="https://akademieneurodiversitaet.com/autismus-fortbildung-finden/"><img src="bilder/blog-autismus-fortbildung-finden.webp" alt="Pädagogische Fachkraft begleitet einen Jungen im Autismus-Spektrum konzentriert bei einer Aufgabe am Tisch" width="720" height="481" loading="lazy"><div><span class="kat">Themenbereich Autismus</span><h3>Autismus Fortbildung finden: 7 wichtige Fragen, die du vor der Anmeldung klären solltest</h3><p>Du tippst „Autismus Fortbildung“ in die Suchmaschine und bekommst eine lange Liste. Tagesseminare, Online-Kurse, Lehrgänge über mehrere Monate …</p><span class="weiter">Weiterlesen</span></div></a>
+        <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-bei-kindern-verstehen/"><img src="bilder/blog-adhs-verstehen.webp" alt="Mädchen schaut am Schreibtisch verträumt zur Seite, ein typisches Bild für AD(H)S bei Kindern" width="720" height="480" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>AD(H)S bei Kindern verstehen: Ein Überblick für pädagogische Fachkräfte</h3><p>Ein Kind startet dreimal in dieselbe Aufgabe und kommt nie über den ersten Satz hinaus. Ein anderes ruft die Antwort in die Runde …</p><span class="weiter">Weiterlesen</span></div></a>
+        <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-im-unterricht/"><img src="bilder/blog-adhs-unterricht.webp" alt="Junge lehnt lässig auf dem Tisch, mit einem Klebezettel auf der Stirn" width="720" height="480" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>AD(H)S im Unterricht: 7 Strukturhilfen, die sofort wirken</h3><p>Ein Kind kramt zum dritten Mal in der Federmappe, obwohl die Aufgabe längst erklärt ist. Ein anderes steht mitten im Rechenweg auf …</p><span class="weiter">Weiterlesen</span></div></a>
+        <a class="artikel" href="https://akademieneurodiversitaet.com/autismus-verstehen-5-erkenntnisse/"><img src="bilder/blog-autismus-verstehen.webp" alt="Kind mit Kopfhörern sitzt konzentriert am Tisch" width="720" height="309" loading="lazy"><div><span class="kat">Themenbereich Autismus</span><h3>Autismus verstehen: 5 wertvolle Erkenntnisse aus der Begleitung von Kindern und Jugendlichen im Autismus-Spektrum</h3><p>Als Lehrer:in, Pädagog:in oder Therapeut:in begegnest du immer häufiger Kindern und Jugendlichen im Autismus-Spektrum …</p><span class="weiter">Weiterlesen</span></div></a>
+        <a class="artikel" href="https://akademieneurodiversitaet.com/adhs-fortbildung-auswaehlen/"><img src="bilder/blog-adhs-fortbildung.webp" alt="Pädagoge arbeitet konzentriert mit Kindern" width="720" height="309" loading="lazy"><div><span class="kat">Themenbereich AD(H)S</span><h3>Die richtige AD(H)S Fortbildung auswählen: 5 Merkmale im Check</h3><p>Ein Kind reagiert auf eine kleine Korrektur mit einem emotionalen Ausbruch. Ein Schüler steht nach jeder Anweisung auf und fragt erneut nach …</p><span class="weiter">Weiterlesen</span></div></a>
+        <a class="artikel" href="https://akademieneurodiversitaet.com/7-gruende-fuer-autismus-kompetenz/"><img src="bilder/blog-7-gruende.webp" alt="Pädagogin mit Autismus-Kompetenz arbeitet mit Kindern im Autismus-Spektrum" width="720" height="309" loading="lazy"><div><span class="kat">Themenbereich Autismus</span><h3>7 Gründe, warum Autismus-Kompetenz für pädagogische Fachkräfte unverzichtbar ist</h3><p>Die Arbeit mit Kindern und Jugendlichen im Autismus-Spektrum kann schnell an Grenzen führen – nicht, weil das Engagement fehlt …</p><span class="weiter">Weiterlesen</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="inner">
+      <img src="bilder/kinder.webp" alt="lächelnder Junge in der Schule" width="600" height="400" loading="lazy">
+      <div>
+        <h2>Bereit, den Unterschied zu machen?</h2>
+        <p>Jede große Veränderung beginnt mit dem ersten, konkreten Schritt. Gewinne sofort an Sicherheit – mit unseren <strong>praxiserprobten Strategien für Autismus</strong> oder den entscheidenden <strong>Schlüsseln zum Verständnis von AD(H)S</strong>. Wähle jetzt die <strong>Soforthilfe</strong>, die du für deinen Alltag brauchst.</p>
+        <div class="knoepfe">
+          <a class="btn" href="https://akademieneurodiversitaet.com/10-praxisnahe-autismus-tipps/">Praxis-Tipps Autismus für 0 €</a>
+          <a class="btn" href="https://akademieneurodiversitaet.com/5-praxisnahe-adhs-tipps/">5 Schlüssel für AD(H)S für 0 €</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <div><img src="bilder/logo-weiss.svg" alt="Akademie Neurodiversität" width="210" height="78" loading="lazy"></div>
+    <div>
+      <a class="rahmen" href="https://akademieneurodiversitaet.com/kontakt">Kontakt</a><br>
+      <a class="rahmen" href="https://lernbereich.akademieneurodiversitaet.com">Login Lernbereich</a>
+    </div>
+    <div>
+      <div class="social">
+        <a href="https://www.instagram.com/akademie.neurodiversitaet/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/akademie.neurodiversitaet" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+      </div>
+      <h3>Rechtliches</h3>
+      <ul>
+        <li><a href="https://akademieneurodiversitaet.com/impressum">Impressum</a></li>
+        <li><a href="https://akademieneurodiversitaet.com/datenschutz">Datenschutzerklärung</a></li>
+        <li><a href="https://akademieneurodiversitaet.com/allgemeine-geschaeftsbedingungen/">AGB</a></li>
+        <li><a href="https://akademieneurodiversitaet.com/widerruf/">Widerruf</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc0pJ8PO-lJAVB2Xj32hFr3WUqP6PjWI0uW1GfKhkSexgmurw/viewform">Vertragskündigung</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy"><div class="inner">© 2026 Akademie Neurodiversität · fachkundig verstehen. praxisorientiert begleiten.</div></div>
+</footer>
+</body>
+</html>
