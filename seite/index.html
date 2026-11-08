@@ -4,16 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Stammtisch – Ergebnisse eintragen</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
 <link rel="stylesheet" href="style.css">
 <style>
 main{max-width:460px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
-h1{font-size:1.6rem;font-weight:800}
-.frage{background:var(--surface);border-radius:14px;padding:14px 16px;font-size:1.05rem;border:1px solid var(--line)}
+h1{font-size:1.6rem;font-weight:700}
+.frage{background:var(--surface);border-radius:0;padding:14px 16px;font-size:1.05rem;border:1px solid var(--line)}
 .frage small{display:block;color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 #vorname{font-size:1.2rem}
 .cluster{display:flex;flex-direction:column;gap:8px}
-.cbtn{text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:12px 14px}
+.cbtn{text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:0;padding:12px 14px}
 .cbtn b{display:block;font-family:var(--display);font-size:1.15rem}
 .cbtn span{font-size:.9rem;color:var(--muted)}
 .cbtn[aria-checked="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface));box-shadow:inset 0 0 0 1px var(--accent)}
@@ -22,15 +21,16 @@ textarea{width:100%;min-height:170px;font-size:1.1rem;resize:vertical}
 .send{font-size:1.2rem;padding:18px}
 .ok{color:var(--accent);font-weight:700;min-height:1.5em;text-align:center;margin:0}
 .back{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0;align-self:flex-start}
-.badge{display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;color:var(--note-ink);font-family:var(--display)}
+.badge{display:inline-block;padding:6px 14px;border-radius:0;font-weight:700;color:var(--note-ink);font-family:var(--display)}
 .liste{display:flex;flex-direction:column;gap:8px}
-.liste div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.98rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:0;padding:8px 12px;font-size:.98rem;white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
+<div class="kopfleiste"><img src="bilder/logo-weiss.svg" alt="Akademie Neurodiversität" width="300" height="52"></div>
 <main>
   <div>
-    <div class="brand">Akademie Neurodiversität · Praxis-Stammtisch</div>
+    <div class="brand">Praxis-Stammtisch</div>
     <h1 id="titel">Ergebnisse eintragen</h1>
   </div>
 
