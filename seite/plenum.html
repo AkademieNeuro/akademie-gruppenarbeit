@@ -49,8 +49,6 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
 .pnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
 .pnav span{color:var(--muted);font-variant-numeric:tabular-nums}
 
-.werkzeuge{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.werkzeuge h2{font-size:1.1rem;font-weight:600;margin-bottom:10px}
 .row{display:flex;flex-wrap:wrap;gap:10px}
 .row input[type=text]{flex:1 1 220px;min-width:0}
 .link{font-family:ui-monospace,Menlo,monospace;font-size:.95rem;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow-wrap:anywhere;user-select:all;flex:1 1 220px;min-width:0}
@@ -86,31 +84,8 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
   </div>
 
   <div id="view"></div>
-
-  <div class="werkzeuge">
-    <div class="card">
-      <h2>Link für die Gruppenleitungen</h2>
-      <div class="row">
-        <div class="link" id="handyLink"></div>
-        <button class="ghost" id="kopieren" type="button">Kopieren</button>
-      </div>
-      <p class="muted" style="margin:8px 0 0;font-size:.9rem">Vor den Breakouts in den Zoom-Chat stellen.</p>
-    </div>
-
-    <div class="card">
-      <h2>Neuen Stammtisch starten</h2>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <input id="neuTitel" type="text" maxlength="60" placeholder="Titel, z. B. ASS-Stammtisch November" aria-label="Titel des Stammtischs">
-        <input id="neuFrage" type="text" maxlength="200" placeholder="Breakout-Frage für den nächsten Stammtisch" aria-label="Breakout-Frage">
-        <div class="row" style="align-items:center">
-          <button class="ghost" id="neuStart" type="button">Starten</button>
-          <button class="btn" id="neuSicher" type="button" hidden>Ja, neu starten</button>
-        </div>
-        <p class="muted" id="neuHinweis" style="margin:0;font-size:.9rem">Das Board wird leer und der neue Stammtisch bekommt ein eigenes Blatt in der Google-Tabelle. Die bisherigen Ergebnisse bleiben dort gespeichert.</p>
-      </div>
-    </div>
-  </div>
 </main>
+
 
 <script src="config.js"></script>
 <script src="app.js"></script>
@@ -166,13 +141,6 @@ function kopf() {
   $("titel").textContent = (stand.titel ? stand.titel + " · " : "") + "Breakout-Frage";
 }
 
-const handyUrl = location.origin + location.pathname.replace(/plenum(\.html)?\/?$/, "");
-$("handyLink").textContent = handyUrl;
-$("kopieren").onclick = async () => {
-  try { await navigator.clipboard.writeText(handyUrl); $("kopieren").textContent = "Kopiert ✓"; }
-  catch (e) { const r = document.createRange(); r.selectNodeContents($("handyLink")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); $("kopieren").textContent = "Markiert – Strg+C"; }
-  setTimeout(() => $("kopieren").textContent = "Kopieren", 2500);
-};
 
 /* ---------- Aktionen ---------- */
 async function aktion(daten, fehlerFeld) {
@@ -187,17 +155,6 @@ async function aktion(daten, fehlerFeld) {
   }
 }
 
-$("neuStart").onclick = () => {
-  if (!$("neuFrage").value.trim()) { $("neuHinweis").textContent = "Bitte zuerst die neue Breakout-Frage eintragen."; return; }
-  $("neuSicher").hidden = false; $("neuHinweis").textContent = "Wirklich neu starten? Das Board wird leer, die bisherigen Ergebnisse bleiben in ihrem Blatt.";
-};
-$("neuSicher").onclick = async () => {
-  $("neuSicher").disabled = true;
-  if (await aktion({ aktion: "neu", titel: $("neuTitel").value.trim(), frage: $("neuFrage").value.trim(), gruppen: 8 }, "neuHinweis")) {
-    $("neuFrage").value = ""; $("neuTitel").value = ""; $("neuHinweis").textContent = "Neuer Stammtisch läuft – das Board ist leer.";
-  }
-  $("neuSicher").hidden = true; $("neuSicher").disabled = false;
-};
 
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   ansicht = t.dataset.v;
