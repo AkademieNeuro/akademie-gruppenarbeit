@@ -9,7 +9,8 @@
 <style>
 main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px}
-.top h1{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:700;max-width:30ch}
+.top>div:first-child{flex:1 1 600px;min-width:0}
+.top h1{font-size:clamp(1.4rem,2.3vw,2.1rem);font-weight:700}
 .top small{display:block;color:var(--muted);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;background:var(--surface);padding:5px;border-radius:0;border:1px solid var(--line)}
 .tab{border:0;background:none;color:var(--muted);font-weight:700;padding:9px 16px;border-radius:0}
@@ -130,6 +131,8 @@ let clusterGesetzt = "";
 function kopf() {
   const hat = Board.cluster(stand.stammtisch).length > 0, tab = document.querySelector('.tab[data-v="cluster"]');
   tab.hidden = !hat;
+  // Mit Clustern gibt es nur die Cluster-Ansicht
+  document.querySelector(".tabs").hidden = hat;
   if (clusterGesetzt !== stand.stammtisch) {
     clusterGesetzt = stand.stammtisch;
     ansicht = hat ? "cluster" : (ansicht === "cluster" ? "mindmap" : ansicht);
