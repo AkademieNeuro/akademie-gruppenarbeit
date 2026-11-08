@@ -13,6 +13,7 @@
   --g1:#5a4a1f; --g2:#244a3a; --g3:#323a66; --g4:#5c3530; --g5:#44325a; --g6:#1f4a55; --g7:#55432a; --g8:#3c4a22;
   --ge:#5fb7bf; --ge-ink:#0d1a1c; --note-ink:#f1f4f3; color-scheme:dark}}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}

@@ -286,7 +286,7 @@ function mindmap() {
   const hoehe = s => s.reduce((x, y) => x + y.h, 0) + BG * Math.max(0, s.length - 1);
   const H = Math.max(hoehe(L), hoehe(R), 240) + 80, cx = W / 2, cy = H / 2;
   let formen = "", linien = "";
-  const fz = umbrechen(stand.frage, 22, 5), fh = fz.length * 24 + 36;
+  const fz = umbrechen(stand.frage, 22, 9), fh = fz.length * 24 + 36;
   function platziere(seite, istLinks) {
     let y = (H - hoehe(seite)) / 2;
     seite.forEach(s => {
