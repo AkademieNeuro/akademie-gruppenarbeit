@@ -5,8 +5,8 @@ window.STAMMTISCH_API = "https://script.google.com/macros/s/AKfycbz76Ury3jXv_dxq
 // Stammtische ohne Eintrag hier laufen ohne Cluster.
 window.STAMMTISCH_CLUSTER = {
   "2026-11-08 ASS 10.11. Unterstützte Kommunikation": [
-    { name: "Körpereigen", beispiel: "Gestik, Mimik, Blick, Laute, Hinführen, Zeigen, Gebärden" },
-    { name: "Nicht-elektronisch", beispiel: "Fotos, Symbolkarten, Kommunikationsbuch, Tafel, Bildpläne" },
-    { name: "Elektronisch", beispiel: "Talker, Tablet mit App, sprechende Taste, Sprachausgabe" }
+    { name: "Körpereigen", beispiel: "Alles, was der Körper selbst zeigt, etwa Blick oder Gesten." },
+    { name: "Nicht-elektronisch", beispiel: "Hilfsmittel ohne Strom, etwa Fotos oder Karten." },
+    { name: "Elektronisch", beispiel: "Geräte, die für das Kind sprechen, etwa Talker oder Tablet." }
   ]
 };
