@@ -18,8 +18,21 @@ window.Board = (function () {
     return r.json();
   }
 
-  const farbe = g => g === 0 ? "var(--ge)" : "var(--g" + (((g - 1) % 8) + 1) + ")";
-  const name = g => g === 0 ? "Enno" : "Gruppe " + g;
+  // Gruppen heißen nach dem Vornamen der Gruppenleitung („Gruppe Anna“).
+  // Der Name steht vorne im Text: „Gruppe Anna: Eintrag“ (so auch in der Google-Tabelle).
+  // Mit Cluster: „Gruppe Anna [Körpereigen]: Eintrag“.
+  const MUSTER = /^Gruppe ([^:\n\[]{1,30}?)(?: \[([^\]\n]{1,40})\])?: ([\s\S]*)$/;
+  function zerlegen(e) {
+    const m = MUSTER.exec(e.text || "");
+    if (m) return { schluessel: m[1].toLowerCase(), name: "Gruppe " + m[1], cluster: m[2] || "", text: m[3] };
+    return { schluessel: "#" + e.gruppe, name: "Gruppe " + e.gruppe, cluster: "", text: e.text };
+  }
+  const cluster = st => (window.STAMMTISCH_CLUSTER || {})[st] || [];
+  function vorname(t) {
+    t = String(t || "").replace(/[:\n\[\]]/g, " ").replace(/\s+/g, " ").trim().slice(0, 30);
+    return t ? t.charAt(0).toUpperCase() + t.slice(1) : "";
+  }
+  const farbe = i => "var(--g" + ((i % 8) + 1) + ")";
 
-  return { laden, senden, farbe, name, konfiguriert };
+  return { laden, senden, zerlegen, cluster, vorname, farbe, konfiguriert };
 })();

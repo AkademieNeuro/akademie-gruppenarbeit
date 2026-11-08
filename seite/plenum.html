@@ -31,6 +31,14 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
 .del.sure{opacity:1;background:var(--danger);color:#fff;width:auto;padding:0 8px;font-size:.8rem;font-weight:700}
 .empty{opacity:.7;font-style:italic}
 
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
+.clc{border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;color:var(--note-ink)}
+.clc h3{font-weight:800;font-size:clamp(1.3rem,2vw,1.7rem);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.clc h3 span{font:700 .95rem var(--body);opacity:.7}
+.clc .bsp{margin:-6px 0 4px;font-size:.9rem;opacity:.75}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:color-mix(in srgb,var(--surface) 80%,transparent);border-radius:10px;padding:7px 11px;font-size:1.08rem;line-height:1.3;overflow-wrap:anywhere;max-width:100%}
+.chip small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.6}
 .mm{overflow-x:auto;border-radius:14px;background:var(--bg)}
 .mm svg{display:block;min-width:760px;width:100%;height:auto}
 
@@ -68,6 +76,7 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
       <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-v="cluster" aria-selected="false" hidden>Cluster</button>
         <button class="tab" role="tab" data-v="mindmap" aria-selected="true">Mindmap</button>
         <button class="tab" role="tab" data-v="spalten" aria-selected="false">Spalten</button>
         <button class="tab" role="tab" data-v="praesentation" aria-selected="false">Präsentation</button>
@@ -79,16 +88,6 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
   <div id="view"></div>
 
   <div class="werkzeuge">
-    <div class="card">
-      <h2>Ergänzung von Enno</h2>
-      <div class="row">
-        <input id="ennoText" type="text" maxlength="500" placeholder="z. B. Drei Gruppen nennen Ankündigen">
-        <select id="ennoZiel" aria-label="Wo soll die Ergänzung erscheinen?"></select>
-        <button class="btn" id="ennoAdd" type="button">Hinzufügen</button>
-      </div>
-      <p class="fehler" id="ennoFehler" aria-live="polite"></p>
-    </div>
-
     <div class="card">
       <h2>Link für die Gruppenleitungen</h2>
       <div class="row">
@@ -104,8 +103,6 @@ main{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
         <input id="neuTitel" type="text" maxlength="60" placeholder="Titel, z. B. ASS-Stammtisch November" aria-label="Titel des Stammtischs">
         <input id="neuFrage" type="text" maxlength="200" placeholder="Breakout-Frage für den nächsten Stammtisch" aria-label="Breakout-Frage">
         <div class="row" style="align-items:center">
-          <label for="neuGruppen">Anzahl Gruppen</label>
-          <select id="neuGruppen"></select>
           <button class="ghost" id="neuStart" type="button">Starten</button>
           <button class="btn" id="neuSicher" type="button" hidden>Ja, neu starten</button>
         </div>
@@ -156,16 +153,17 @@ async function aktualisieren() {
   }
 }
 
+let clusterGesetzt = "";
 function kopf() {
+  const hat = Board.cluster(stand.stammtisch).length > 0, tab = document.querySelector('.tab[data-v="cluster"]');
+  tab.hidden = !hat;
+  if (clusterGesetzt !== stand.stammtisch) {
+    clusterGesetzt = stand.stammtisch;
+    ansicht = hat ? "cluster" : (ansicht === "cluster" ? "mindmap" : ansicht);
+    document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x.dataset.v === ansicht));
+  }
   $("frage").textContent = stand.frage;
   $("titel").textContent = (stand.titel ? stand.titel + " · " : "") + "Breakout-Frage";
-  const ziel = $("ennoZiel"), alt = ziel.value;
-  ziel.innerHTML = '<option value="0">als eigener Ast „Enno“</option>';
-  for (let g = 1; g <= stand.gruppen; g++) ziel.innerHTML += '<option value="' + g + '">bei Gruppe ' + g + "</option>";
-  if (alt && [...ziel.options].some(o => o.value === alt)) ziel.value = alt;
-  const sel = $("neuGruppen");
-  if (!sel.options.length) for (let g = 2; g <= 8; g++) sel.innerHTML += "<option>" + g + "</option>";
-  if (document.activeElement !== sel) sel.value = String(stand.gruppen);
 }
 
 const handyUrl = location.origin + location.pathname.replace(/plenum(\.html)?\/?$/, "");
@@ -188,13 +186,6 @@ async function aktion(daten, fehlerFeld) {
     return false;
   }
 }
-$("ennoAdd").onclick = async () => {
-  const text = $("ennoText").value.trim(); if (!text) return;
-  $("ennoAdd").disabled = true;
-  if (await aktion({ aktion: "enno", gruppe: Number($("ennoZiel").value), text }, "ennoFehler")) $("ennoText").value = "";
-  $("ennoAdd").disabled = false;
-};
-$("ennoText").addEventListener("keydown", e => { if (e.key === "Enter") $("ennoAdd").click(); });
 
 $("neuStart").onclick = () => {
   if (!$("neuFrage").value.trim()) { $("neuHinweis").textContent = "Bitte zuerst die neue Breakout-Frage eintragen."; return; }
@@ -202,7 +193,7 @@ $("neuStart").onclick = () => {
 };
 $("neuSicher").onclick = async () => {
   $("neuSicher").disabled = true;
-  if (await aktion({ aktion: "neu", titel: $("neuTitel").value.trim(), frage: $("neuFrage").value.trim(), gruppen: Number($("neuGruppen").value) }, "neuHinweis")) {
+  if (await aktion({ aktion: "neu", titel: $("neuTitel").value.trim(), frage: $("neuFrage").value.trim(), gruppen: 8 }, "neuHinweis")) {
     $("neuFrage").value = ""; $("neuTitel").value = ""; $("neuHinweis").textContent = "Neuer Stammtisch läuft – das Board ist leer.";
   }
   $("neuSicher").hidden = true; $("neuSicher").disabled = false;
@@ -215,28 +206,50 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
 });
 
 /* ---------- Darstellung ---------- */
+// Gruppen = Vornamen der Gruppenleitungen, in der Reihenfolge des ersten Eintrags
 function aeste() {
-  const a = []; for (let g = 1; g <= stand.gruppen; g++) a.push(g);
-  if (stand.eintraege.some(e => e.gruppe === 0)) a.push(0);
+  const a = [], idx = {};
+  stand.eintraege.forEach(e => {
+    const z = Board.zerlegen(e);
+    if (!(z.schluessel in idx)) { idx[z.schluessel] = a.length; a.push({ schluessel: z.schluessel, name: z.name, farbe: Board.farbe(a.length), eintraege: [] }); }
+    a[idx[z.schluessel]].eintraege.push({ id: e.id, text: z.text, cluster: z.cluster });
+  });
   return a;
 }
-const vonGruppe = g => stand.eintraege.filter(e => e.gruppe === g);
-const ergaenzung = e => e.von === "Enno" && e.gruppe !== 0;
+// Cluster (Formen) aus config.js; Einträge ohne Cluster landen in „Ohne Zuordnung“
+function clusterAeste() {
+  const def = Board.cluster(stand.stammtisch);
+  if (!def.length) return [];
+  const a = def.map((c, i) => ({ name: c.name, beispiel: c.beispiel, farbe: Board.farbe(i), eintraege: [] }));
+  const rest = { name: "Ohne Zuordnung", beispiel: "", farbe: "var(--line)", eintraege: [] };
+  stand.eintraege.forEach(e => {
+    const z = Board.zerlegen(e), ziel = a.find(c => c.name === z.cluster) || rest;
+    ziel.eintraege.push({ id: e.id, text: z.text, von: z.name });
+  });
+  if (rest.eintraege.length) a.push(rest);
+  return a;
+}
+const leer = '<div class="card empty" style="text-align:center;padding:40px">Noch keine Ergebnisse. Sobald eine Gruppe etwas abschickt, erscheint es hier.</div>';
 
 function zeichnen() {
   if (!stand) return;
-  const v = $("view");
-  if (ansicht === "spalten") {
+  const v = $("view"), a = aeste(), c = clusterAeste();
+  if (ansicht === "cluster" && c.length) {
+    v.innerHTML = '<div class="cl">' + c.map(k => '<div class="clc" style="background:' + k.farbe + '"><h3>' + esc(k.name) + "<span>" + k.eintraege.length + "</span></h3>" +
+      (k.beispiel ? '<p class="bsp">' + esc(k.beispiel) + "</p>" : "") + '<div class="chips">' +
+      (k.eintraege.length ? k.eintraege.map(e => '<div class="chip"><small>' + esc(e.von) + "</small>" + esc(e.text) + "</div>").join("") : '<div class="empty">noch leer</div>') +
+      "</div></div>").join("") + "</div>";
+  } else if (ansicht === "spalten") {
+    if (!a.length) { v.innerHTML = leer; return; }
     v.innerHTML = '<div class="cols" id="cols"></div>';
-    aeste().forEach(g => {
+    a.forEach(g => {
       const col = document.createElement("div");
-      col.className = "col" + (g === 0 ? " enno" : ""); col.style.background = Board.farbe(g);
-      col.innerHTML = "<h3>" + Board.name(g) + "</h3>";
-      const liste = vonGruppe(g);
-      if (!liste.length) col.innerHTML += '<div class="empty">Noch keine Ergebnisse</div>';
-      liste.forEach(e => {
+      col.className = "col"; col.style.background = g.farbe;
+      col.innerHTML = "<h3>" + esc(g.name) + "</h3>";
+      g.eintraege.forEach(e => {
         const d = document.createElement("div"); d.className = "note";
-        d.innerHTML = (ergaenzung(e) ? '<span class="by">Ergänzung Enno</span>' : "") + esc(e.text);
+        if (e.cluster) { const t = document.createElement("span"); t.className = "by"; t.textContent = e.cluster; d.appendChild(t); }
+        d.appendChild(document.createTextNode(e.text));
         const x = document.createElement("button"); x.className = "del"; x.type = "button"; x.textContent = "×"; x.setAttribute("aria-label", "Eintrag löschen");
         x.onclick = () => {
           if (!x.classList.contains("sure")) { x.classList.add("sure"); x.textContent = "Löschen?"; setTimeout(() => { x.classList.remove("sure"); x.textContent = "×"; }, 3000); return; }
@@ -247,15 +260,16 @@ function zeichnen() {
       $("cols").appendChild(col);
     });
   } else if (ansicht === "praesentation") {
-    const a = aeste(); if (folie >= a.length) folie = 0;
-    const g = a[folie], liste = vonGruppe(g);
-    v.innerHTML = '<div class="pres' + (g === 0 ? " enno" : "") + '" style="background:' + Board.farbe(g) + '"><h3>' + Board.name(g) + "</h3>" +
-      (liste.length ? "<ul>" + liste.map(e => "<li>" + (ergaenzung(e) ? "<em>Enno ergänzt:</em> " : "") + esc(e.text) + "</li>").join("") + "</ul>" : '<div class="empty">Noch keine Ergebnisse</div>') +
-      '</div><div class="pnav"><button class="ghost" type="button" id="zurueck">← Zurück</button><span>' + (folie + 1) + " / " + a.length + '</span><button class="ghost" type="button" id="weiter">Weiter →</button></div>';
-    $("zurueck").onclick = () => { folie = (folie - 1 + a.length) % a.length; zeichnen(); };
-    $("weiter").onclick = () => { folie = (folie + 1) % a.length; zeichnen(); };
+    const p = c.length ? c : a;
+    if (!p.length || !stand.eintraege.length) { v.innerHTML = leer; return; }
+    if (folie >= p.length) folie = 0;
+    const g = p[folie], n = p.length;
+    v.innerHTML = '<div class="pres" style="background:' + g.farbe + '"><h3>' + esc(g.name) + "</h3>" + (g.eintraege.length ? "<ul>" + g.eintraege.map(e => "<li>" + esc(e.text) + (e.von ? ' <small style="opacity:.6;font-size:.6em">' + esc(e.von) + "</small>" : "") + "</li>").join("") + "</ul>" : '<div class="empty">noch leer</div>') +
+      '</div><div class="pnav"><button class="ghost" type="button" id="zurueck">← Zurück</button><span>' + (folie + 1) + " / " + n + '</span><button class="ghost" type="button" id="weiter">Weiter →</button></div>';
+    $("zurueck").onclick = () => { folie = (folie - 1 + n) % n; zeichnen(); };
+    $("weiter").onclick = () => { folie = (folie + 1) % n; zeichnen(); };
   } else {
-    v.innerHTML = '<div class="mm">' + mindmap() + "</div>";
+    v.innerHTML = '<div class="mm">' + mindmap(a) + "</div>";
   }
 }
 
@@ -273,12 +287,12 @@ function umbrechen(t, max, zeilen) {
   return out;
 }
 
-function mindmap() {
-  const W = 1100, a = aeste(), links = [], rechts = [];
+function mindmap(a) {
+  const W = 1100, links = [], rechts = [];
   a.forEach((g, i) => (i % 2 ? rechts : links).push(g));
   const LH = 21, PAD = 12, GAP = 10, BG = 26;
   const stapel = seite => seite.map(g => {
-    const blaetter = vonGruppe(g).map(e => { const z = umbrechen(e.text, 30, 3); return { e, z, h: z.length * LH + PAD * 2 }; });
+    const blaetter = g.eintraege.map(e => { const z = umbrechen(e.text, 30, 3); return { z, h: z.length * LH + PAD * 2 }; });
     const h = Math.max(56, blaetter.reduce((s, l) => s + l.h, 0) + GAP * Math.max(0, blaetter.length - 1));
     return { g, blaetter, h };
   });
@@ -290,15 +304,14 @@ function mindmap() {
   function platziere(seite, istLinks) {
     let y = (H - hoehe(seite)) / 2;
     seite.forEach(s => {
-      const by = y + s.h / 2, bx = istLinks ? 380 : 720, kante = istLinks ? bx - 70 : bx + 70, farbe = Board.farbe(s.g);
+      const pw = Math.min(190, Math.max(140, s.g.name.length * 10 + 30)), by = y + s.h / 2, bx = istLinks ? 380 : 720, kante = istLinks ? bx - pw / 2 : bx + pw / 2;
       linien += '<path d="M' + cx + "," + cy + " C" + (cx + (bx - cx) * .5) + "," + cy + " " + (cx + (bx - cx) * .5) + "," + by + " " + bx + "," + by + '" style="fill:none;stroke:var(--line);stroke-width:3"/>';
-      formen += '<rect x="' + (bx - 70) + '" y="' + (by - 22) + '" width="140" height="44" rx="22" style="fill:' + farbe + '"/><text x="' + bx + '" y="' + (by + 6) + '" text-anchor="middle" style="font:800 17px var(--display);fill:' + (s.g === 0 ? "var(--ge-ink)" : "var(--note-ink)") + '">' + Board.name(s.g) + "</text>";
-      if (!s.blaetter.length) formen += '<text x="' + (istLinks ? bx - 90 : bx + 90) + '" y="' + (by + 5) + '" text-anchor="' + (istLinks ? "end" : "start") + '" style="font:italic 15px var(--body);fill:var(--muted)">noch leer</text>';
+      formen += '<rect x="' + (bx - pw / 2) + '" y="' + (by - 22) + '" width="' + pw + '" height="44" rx="22" style="fill:' + s.g.farbe + '"/><text x="' + bx + '" y="' + (by + 6) + '" text-anchor="middle" style="font:800 17px var(--display);fill:var(--note-ink)">' + esc(umbrechen(s.g.name, 18, 1)[0]) + "</text>";
       let ly = y;
       s.blaetter.forEach(l => {
         const lx = istLinks ? 40 : 830, lw = 230, my = ly + l.h / 2, ax = istLinks ? lx + lw : lx, mx = kante + (ax - kante) * .5;
-        linien += '<path d="M' + kante + "," + by + " C" + mx + "," + by + " " + mx + "," + my + " " + ax + "," + my + '" style="fill:none;stroke:' + farbe + ';stroke-width:2.5"/>';
-        formen += '<rect x="' + lx + '" y="' + ly + '" width="' + lw + '" height="' + l.h + '" rx="10" style="fill:var(--surface);stroke:' + (ergaenzung(l.e) ? "var(--ge)" : farbe) + ';stroke-width:' + (ergaenzung(l.e) ? 2.5 : 2) + '"/>';
+        linien += '<path d="M' + kante + "," + by + " C" + mx + "," + by + " " + mx + "," + my + " " + ax + "," + my + '" style="fill:none;stroke:' + s.g.farbe + ';stroke-width:2.5"/>';
+        formen += '<rect x="' + lx + '" y="' + ly + '" width="' + lw + '" height="' + l.h + '" rx="10" style="fill:var(--surface);stroke:' + s.g.farbe + ';stroke-width:2"/>';
         l.z.forEach((t, i) => { formen += '<text x="' + (lx + 12) + '" y="' + (ly + PAD + 16 + i * LH) + '" style="font:15px var(--body);fill:var(--ink)">' + esc(t) + "</text>"; });
         ly += l.h + GAP;
       });
