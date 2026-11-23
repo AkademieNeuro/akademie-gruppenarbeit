@@ -10,3 +10,5 @@ Gruppen heißen nach dem Vornamen der Person, die tippt („Gruppe Anna“). Nam
 Cluster zum Antippen werden pro Stammtisch in `seite/config.js` eingetragen (Schlüssel = Blattname). Ohne Eintrag läuft der Stammtisch ohne Cluster.
 
 Die Seiten liegen im Ordner `seite`. Der Ordner `google-apps-script` enthält den Code dieser Tabelle zur Sicherung (ohne Leitungscode).
+
+<!-- Test Claude-Push 23.11.2026, Branch wird wieder gelöscht -->
