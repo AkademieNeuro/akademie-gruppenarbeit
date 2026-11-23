@@ -9,9 +9,8 @@ window.STAMMTISCH_CLUSTER = {
     { name: "Nicht-elektronisch", beispiel: "Hilfsmittel ohne Strom, etwa Fotos oder Karten." },
     { name: "Elektronisch", beispiel: "Geräte, die für das Kind sprechen, etwa Talker oder Tablet." }
   ],
-  "2026-11-23 ADHS 23.11. Exekutive Funktionen": [
-    { name: "Planen", beispiel: "Nur antippen, wenn euer Zoom-Raum „Planen …“ heißt." },
-    { name: "Starten", beispiel: "Nur antippen, wenn euer Zoom-Raum „Starten …“ heißt." },
-    { name: "Dranbleiben", beispiel: "Nur antippen, wenn euer Zoom-Raum „Dranbleiben …“ heißt." }
+  "2026-11-23 ADHS 23.11. Ideen für den Alltag": [
+    { name: "Planen und Anfangen", beispiel: "Alles, was hilft, bis es losgeht." },
+    { name: "Dranbleiben und Beenden", beispiel: "Alles, was hilft, dabeizubleiben oder gut aufzuhören." }
   ]
 };
