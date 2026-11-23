@@ -9,9 +9,9 @@ window.STAMMTISCH_CLUSTER = {
     { name: "Nicht-elektronisch", beispiel: "Hilfsmittel ohne Strom, etwa Fotos oder Karten." },
     { name: "Elektronisch", beispiel: "Geräte, die für das Kind sprechen, etwa Talker oder Tablet." }
   ],
-  "2026-11-23 ADHS 23.11. Exekutive Funktionen – Praxis-Koffer": [
-    { name: "Planen", beispiel: "Bevor es losgeht, etwa Ablauf sichtbar machen oder Aufgabe zerlegen." },
-    { name: "Starten", beispiel: "Den Anfang schaffen, etwa ein Startsignal oder der erste kleine Schritt." },
-    { name: "Dranbleiben", beispiel: "Bis zum Ende durchhalten, etwa Zwischenziele oder Pausen." }
+  "2026-11-23 ADHS 23.11. Exekutive Funktionen": [
+    { name: "Planen", beispiel: "Nur antippen, wenn euer Zoom-Raum „Planen …“ heißt." },
+    { name: "Starten", beispiel: "Nur antippen, wenn euer Zoom-Raum „Starten …“ heißt." },
+    { name: "Dranbleiben", beispiel: "Nur antippen, wenn euer Zoom-Raum „Dranbleiben …“ heißt." }
   ]
 };
